@@ -115,7 +115,7 @@
         marker: "# {mark} ANSIBLE MANAGED BLOCK"
         insertafter: "DocumentRoot /var/www/web"
         content: |
-          ServerName gei.dev
+          ServerName golden-eagle.dev
           DirectoryIndex index.php index.html
           AddType application/x-httpd-php .php
 
@@ -167,11 +167,11 @@
     - name: max upload size
       lineinfile: dest=/etc/php/7.0/apache2/php.ini regexp="upload_max_filesize = 2M" line="upload_max_filesize = 24M" state=present
 
-#    - name: copy ssl key
-#      copy: src=./ssl/apache-selfsigned.key dest=/etc/ssl/private/apache-selfsigned.key
-#
-#    - name: copy ssl cert
-#      copy: src=./ssl/apache-selfsigned.crt dest=/etc/ssl/certs/apache-selfsigned.crt
+    - name: copy ssl key
+      copy: src=./ssl/apache-selfsigned.key dest=/etc/ssl/private/apache-selfsigned.key
+
+    - name: copy ssl cert
+      copy: src=./ssl/apache-selfsigned.crt dest=/etc/ssl/certs/apache-selfsigned.crt
 
     - name: restart apache2
       service: name=apache2 state=restarted
@@ -182,7 +182,7 @@
         - goldeneagle
 
     - name: install symfony with default parameters
-      command: cp -n app/config/parameters.yml.dist app/config/parameters.yml
+      command: cp -n /var/www/app/config/parameters.yml.dist /var/www/app/config/parameters.yml
 
     - name: speed up composer
       command: composer global require "hirak/prestissimo:^0.2"

@@ -11,9 +11,9 @@ Vagrant.configure(2) do |config|
     # See https://github.com/mitchellh/vagrant/issues/5005
     machine.ssh.insert_key = false
 
-    machine.vm.network "private_network", ip: "192.168.33.17"
+    machine.vm.network "private_network", ip: "192.168.33.32"
 
-    machine.vm.hostname = "gei"
+    machine.vm.hostname = "golden-eage"
 
     machine.vm.synced_folder ".", "/var/www", :mount_options => ["dmode=777", "fmode=666"]
 
