@@ -1,0 +1,204 @@
+---
+- hosts: all
+  sudo: true
+  vars:
+    - mysql_pass: root
+  tasks:
+    - name: install python-software-properties
+      apt: name=python-software-properties state=present
+    - name: add php 7 ppa
+      apt_repository: repo='ppa:ondrej/php'
+      tags: php
+    - name: add apache 2.4.17 ppa
+      apt_repository: repo='ppa:ondrej/apache2'
+      tags: apache
+    - name: add mysql apt key
+      command: apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8C718D3B5072E1F5
+      tags: mysql
+    - name: add mysql 5.7 ppa
+      apt_repository: repo='deb http://repo.mysql.com/apt/ubuntu/ trusty mysql-5.7' state=present
+      tags: mysql
+    - name: add nodejs source ppa
+      shell: curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+      tags: node
+    - name: update apt keys
+      command: apt-key update
+
+    - name: install apt packages
+      apt: name={{ item }} state=present update_cache=true
+      with_items:
+        - apache2
+        - mysql-server
+        - git
+        - curl
+        - ghostscript
+        - imagemagick
+        - beanstalkd
+        - nodejs
+        - openssl
+        - php7.0-cli
+        - php7.0-common
+        - libapache2-mod-php7.0
+        - php7.0
+        - php7.0-mysql
+        - php7.0-fpm
+        - php7.0-curl
+        - php7.0-intl
+        - php7.0-mbstring
+        - php7.0-gd
+        - php7.0-xml
+        - php7.0-zip
+        - python-mysqldb # required for ansible mysql_*
+
+    - name: stop mysql
+      service: name=mysql state=stopped
+      tags: mysql
+    - name: start mysql with skip-grant-tables
+      shell: mysqld_safe --skip-grant-tables --skip-networking &
+      tags: mysql
+    - name: create mysql user symfony
+      shell: mysql -e "
+            flush privileges;
+            grant all on *.* to symfony@localhost identified by 'd3v3l0pm3nt2016';"
+      tags: mysql
+    - name: restart mysql
+      service: name=mysql state=restarted
+      tags: mysql
+
+    - name: Symlink nodejs
+      file: src=/usr/bin/nodejs dest=/usr/bin/node state=link
+      tags: node
+
+    - name: install global npm packages
+      npm: name={{ item }} global=yes
+      with_items:
+        - gulp
+        - bower
+
+    - name: install composer
+      shell: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin creates=/usr/local/bin/composer
+      tags: composer
+
+    - name: rename composer.phar to composer
+      shell: mv /usr/local/bin/composer.phar /usr/local/bin/composer creates=/usr/local/bin/composer
+      tags: composer
+
+    - name: make composer executable
+      file: path=/usr/local/bin/composer mode=a+x state=file
+      tags: composer
+
+    - name: speed up composer
+      shell: composer global require "hirak/prestissimo:^0.3.2"
+      tags: composer
+
+    - name: get apache2 ssl ready
+      command: ln -sf /etc/apache2/sites-available/default-ssl.conf /etc/apache2/sites-enabled/default-ssl.conf
+
+    - name: get apache2 ssl ready
+      lineinfile: dest=/etc/apache2/sites-available/default-ssl.conf regexp="etc/ssl/certs/ssl-cert-snakeoil.pem" line="SSLCertificateFile /etc/ssl/certs/apache-selfsigned.crt" state=present
+
+    - name: get apache2 ssl ready
+      lineinfile: dest=/etc/apache2/sites-available/default-ssl.conf regexp="etc/ssl/private/ssl-cert-snakeoil.key" line="SSLCertificateKeyFile /etc/ssl/private/apache-selfsigned.key" state=present
+
+    - name: set apache2 document root
+      lineinfile: dest=/etc/apache2/sites-enabled/{{ item }}.conf regexp="DocumentRoot /var/www/html" line="DocumentRoot /var/www/web" state=present
+      with_items:
+          - 000-default
+          - default-ssl
+
+    - name: enable http2
+      command: a2enmod http2
+
+    - name: update apache2 host conf
+      blockinfile:
+        dest: /etc/apache2/sites-enabled/{{ item }}.conf
+        marker: "# {mark} ANSIBLE MANAGED BLOCK"
+        insertafter: "DocumentRoot /var/www/web"
+        content: |
+          ServerName gei.dev
+          DirectoryIndex index.php index.html
+          AddType application/x-httpd-php .php
+
+          # Disable .htaccess and set settings required for Symfony
+          <Directory /var/www/web>
+            AllowOverride None
+            Order Allow,Deny
+            Allow from All
+            <IfModule mod_rewrite.c>
+              Options -MultiViews
+              RewriteEngine On
+              RewriteCond %{REQUEST_FILENAME} !-f
+              RewriteRule ^(.*)$ app_dev.php [QSA,L]
+            </IfModule>
+          </Directory>
+
+          # HTTP/2
+          Protocols h2 http/1.1
+
+      with_items:
+          - 000-default
+          - default-ssl
+
+    - name: enable some apache2 confs
+      command: cp /etc/apache2/conf-available/{{ item }} /etc/apache2/conf-enabled/{{ item }}
+      with_items:
+        - php7.0-fpm.conf
+
+    - name: enable some apache2 modules
+      command: cp /etc/apache2/mods-available/{{ item }} /etc/apache2/mods-enabled/{{ item }}
+      with_items:
+        - rewrite.load
+        - socache_shmcb.load # need for ssl
+        - ssl.conf
+        - ssl.load
+
+    - name: php timezone
+      lineinfile: dest=/etc/php/7.0/apache2/php.ini regexp="^\;date\.timezone =" line="date.timezone = Europe/London" state=present
+
+    - name: php extensions
+      lineinfile: dest=/etc/php/7.0/apache2/php.ini regexp="^\;extension={{ item }}\.dll" line="extension={{ item }}.so" state=present
+      with_items:
+        - php_gd2
+        - php_intl
+        - php_mbstring
+        - php_openssl
+        - php_pdo_mysql
+
+    - name: max upload size
+      lineinfile: dest=/etc/php/7.0/apache2/php.ini regexp="upload_max_filesize = 2M" line="upload_max_filesize = 24M" state=present
+
+#    - name: copy ssl key
+#      copy: src=./ssl/apache-selfsigned.key dest=/etc/ssl/private/apache-selfsigned.key
+#
+#    - name: copy ssl cert
+#      copy: src=./ssl/apache-selfsigned.crt dest=/etc/ssl/certs/apache-selfsigned.crt
+
+    - name: restart apache2
+      service: name=apache2 state=restarted
+
+    - name: create databases
+      mysql_db: name={{ item }} state=present login_user=root encoding=utf8mb4 collation=utf8mb4_bin
+      with_items:
+        - goldeneagle
+
+    - name: install symfony with default parameters
+      command: cp -n app/config/parameters.yml.dist app/config/parameters.yml
+
+    - name: speed up composer
+      command: composer global require "hirak/prestissimo:^0.2"
+
+    - name: install symfony
+      sudo: false
+      composer:
+        command: install
+        working_dir: /var/www
+        no_dev: no
+
+    - name: create schema
+      command: php bin/console doctrine:schema:create
+
+    - name: create admin user admin
+      command: php bin/console fos:user:create admin hello@fourlabs.co.uk admin --super-admin
+
+    - name: create admin user jonny
+      command: php bin/console fos:user:create jonny jonny@fourlabs.co.uk jonny --super-admin
