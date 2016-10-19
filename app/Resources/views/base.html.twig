@@ -140,13 +140,10 @@
                 </li>
                 <li class="dropdown"> <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img src="/theme/dist/images/users/paul.jpg" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">Paul Siha</b> </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
-                        <li><a href="#"><i class="ti-wallet"></i> My Balance</a></li>
-                        <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> My Profile</a></li>
+                        <li><a href="#"><i class="fa fa-suitcase fa-fw"></i> Manage leave</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-power-off"></i> Logout</a></li>
+                        <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-power-off fa-fw"></i> Logout</a></li>
                     </ul>
                     <!-- /.dropdown-user -->
                 </li>
@@ -171,10 +168,12 @@
         <div class="container-fluid">
             <div class="row bg-title">
                 <div class="col-lg-12">
-                    <h4 class="page-title">Welcome to My Admin</h4>
+                    <h4 class="page-title">{{ block('title') }}</h4>
                     <ol class="breadcrumb">
-                        <li><a href="#">Dashboard</a></li>
-                        <li class="active">Dashboard 1</li>
+                        <li><a href="{{ path('app_dashboard') }}">Home</a></li>
+                        {% block breadcrumbs %}
+                        <li class="active">{{ block('title') }}</li>
+                        {% endblock %}
                     </ol>
                 </div>
                 <!-- /.col-lg-12 -->
@@ -186,6 +185,7 @@
     <!-- /#page-wrapper -->
 </div>
 <!-- /#wrapper -->
+<script src="/vendor/x-div/dist/x-div.js"></script>
 <script src="/theme/dist/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="/theme/dist/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- Menu Plugin JavaScript -->

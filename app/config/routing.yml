@@ -1,6 +1,9 @@
-app:
+app_controller:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
+app_explicit:
+    resource: '@AppBundle/Resources/config/routing.yml'
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"

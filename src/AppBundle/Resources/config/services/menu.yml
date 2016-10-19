@@ -1,0 +1,17 @@
+services:
+  app.menu_builder:
+    class: AppBundle\Menu\MainMenuBuilder
+    arguments: ["@knp_menu.factory"]
+    tags:
+      - { name: knp_menu.menu_builder, method: createMainMenu, alias: main }
+
+  app.menu_builder.abstract:
+    class: AppBundle\Menu\AbstractMenuBuilder
+    abstract: true
+    arguments: ["@knp_menu.factory"]
+
+  app.menu_builder.applicants:
+    class: AppBundle\Menu\ContactsMenuBuilder
+    parent: app.menu_builder.abstract
+    tags:
+      - { name: knp_menu.menu_builder, method: createApplicantsMenu, alias: applicants }

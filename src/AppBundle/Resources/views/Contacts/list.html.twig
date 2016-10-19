@@ -1,0 +1,25 @@
+{% extends 'AppBundle::datatable.html.twig' %}
+
+{% use 'AppBundle:Contacts:dependencies.html.twig' with
+    stylesheets as additional_stylesheets,
+    javascripts as additional_javascripts
+%}
+
+{% block stylesheets %}
+{{ parent() }}
+{{ block('additional_stylesheets') }}
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+{{ block('additional_javascripts') }}
+{% endblock %}
+
+{% block title %}Applicants{% endblock %}
+
+{% block tabs %}
+{{ knp_menu_render('applicants', {
+    'template': 'AppBundle:Menu:tabs.html.twig',
+    'currentClass': 'active'
+}) }}
+{% endblock %}

@@ -1,0 +1,8 @@
+app_applicants:
+  path: /applicants
+  defaults: { _controller: AppBundle\Action\Contacts\Applicants:__invoke }
+  methods: [GET]
+
+app_applicants_list:
+  path: /applicants/list
+  defaults: { _controller: AppBundle\Action\Contacts\ApplicantsList:__invoke }

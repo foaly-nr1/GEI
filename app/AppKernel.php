@@ -20,6 +20,8 @@ class AppKernel extends Kernel
             new Dunglas\ActionBundle\DunglasActionBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Nelmio\SecurityBundle\NelmioSecurityBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new Sg\DatatablesBundle\SgDatatablesBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
