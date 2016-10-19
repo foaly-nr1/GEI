@@ -11,6 +11,7 @@
   "devDependencies": {
     "autoprefixer": "^6.5.0",
     "browser-sync": "^2.17.0",
+    "dep-linker": "^1.0.24",
     "gulp": "^3.9.1",
     "gulp-less": "^3.1.0",
     "gulp-organiser": "^1.0.6",
@@ -18,5 +19,8 @@
     "gulp-sourcemaps": "^1.6.0",
     "less-plugin-autoprefix": "^1.5.1",
     "lodash": "^4.16.2"
+  },
+  "dependencies": {
+    "datatables": "^1.10.12"
   }
 }
