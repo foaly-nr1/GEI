@@ -1333,11 +1333,21 @@ table.focus-on {
   position:fixed;
 }
 .login-box{
-  height:100%;
-  background:@white;
+  height: 100%;
+  background: #000;
+  color: @primary;
   position:absolute;
-  right:0px;
+  right:0;
   width:420px;
+
+  .white-box {
+    background: none;
+
+    h3 {
+      color: @primary;
+    }
+  }
+
   .footer{
     width:100%;
     left:0px;

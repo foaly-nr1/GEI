@@ -1,0 +1,14 @@
+{% extends 'knp_menu.html.twig' %}
+
+{% block root %}
+<ul class="nav" id="side-menu">
+    {{ block('children') }}
+</ul>
+{% endblock %}
+
+{% block label %}
+    {% spaceless %}
+        {% if item.attribute('icon') %}<i class="fa fa-{{ item.attribute('icon') }} fa-fw" aria-hidden="true"></i>{% endif %}
+        {{ parent() }}
+    {% endspaceless %}
+{% endblock %}

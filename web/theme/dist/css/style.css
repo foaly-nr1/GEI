@@ -598,7 +598,6 @@ pre {
   padding: 0px;
   min-height: 568px;
   background: #f1f2f7;
-  padding-bottom: 60px;
 }
 .content-wrapper #page-wrapper {
   margin-left: 0px;
@@ -3323,10 +3322,17 @@ table.focus-on tbody tr.focused td {
 }
 .login-box {
   height: 100%;
-  background: #ffffff;
+  background: #000;
+  color: #ffc400;
   position: absolute;
-  right: 0px;
+  right: 0;
   width: 420px;
+}
+.login-box .white-box {
+  background: none;
+}
+.login-box .white-box h3 {
+  color: #ffc400;
 }
 .login-box .footer {
   width: 100%;
@@ -11822,7 +11828,7 @@ table.focus-on tbody tr.focused td {
 @media (min-width: 768px) {
   #page-wrapper {
     position: relative;
-    margin: 0px 0 0 220px;
+    margin: 0 0 0 220px;
     -webkit-transition: 0.5s ease-out;
     transition: 0.5s ease-out;
     top: 50px;
@@ -11830,14 +11836,15 @@ table.focus-on tbody tr.focused td {
   .navbar-default {
     position: fixed;
     width: 100%;
-    top: 0px;
+    top: 0;
   }
   .sidebar {
     z-index: 1;
     position: fixed;
     width: 220px;
     top: 50px;
-    height: 95%;
+    height: 100%;
+    padding-top: 50px;
     -webkit-transform: translate3d(0, 0, 0);
             transform: translate3d(0, 0, 0);
     -webkit-transition: all 0.6s ease-out;

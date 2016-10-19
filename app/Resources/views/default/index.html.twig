@@ -1,76 +1,335 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Dashboard{% endblock %}
+
 {% block body %}
-    <div id="wrapper">
-        <div id="container">
-            <div id="welcome">
-                <h1><span>Welcome to</span> Symfony {{ constant('Symfony\\Component\\HttpKernel\\Kernel::VERSION') }}</h1>
+<div class="row">
+    <div class="col-md-8 col-lg-9 col-sm-12">
+        <div class="white-box">
+            <div class="row row-in">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="col-in text-center">
+                        <h5 class="text-danger">Chrome</h5>
+                        <h3 class="counter">5645</h3>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="col-in text-center b-r-none">
+                        <h5 class="text-muted text-warning">Mozila</h5>
+                        <h3 class="counter">4250</h3>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="col-in text-center">
+                        <h5 class="text-muted text-purple">Safari</h5>
+                        <h3 class="counter">3450</h3>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="col-in text-center b-0">
+                        <h5 class="text-primary">Explorer</h5>
+                        <h3 class="counter">2500</h3>
+                    </div>
+                </div>
             </div>
-
-            <div id="status">
-                <p>
-                    <svg id="icon-status" width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1671 566q0 40-28 68l-724 724-136 136q-28 28-68 28t-68-28l-136-136-362-362q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 295 656-657q28-28 68-28t68 28l136 136q28 28 28 68z" fill="#759E1A"/></svg>
-
-                    Your application is now ready. You can start working on it at:
-                    <code>{{ base_dir }}</code>
-                </p>
-            </div>
-
-            <div id="next">
-                <h2>What's next?</h2>
-                <p>
-                    <svg id="icon-book" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="-12.5 9 64 64" enable-background="new -12.5 9 64 64" xml:space="preserve">
-                        <path fill="#AAA" d="M6.8,40.8c2.4,0.8,4.5-0.7,4.9-2.5c0.2-1.2-0.3-2.1-1.3-3.2l-0.8-0.8c-0.4-0.5-0.6-1.3-0.2-1.9
-                            c0.4-0.5,0.9-0.8,1.8-0.5c1.3,0.4,1.9,1.3,2.9,2.2c-0.4,1.4-0.7,2.9-0.9,4.2l-0.2,1c-0.7,4-1.3,6.2-2.7,7.5
-                            c-0.3,0.3-0.7,0.5-1.3,0.6c-0.3,0-0.4-0.3-0.4-0.3c0-0.3,0.2-0.3,0.3-0.4c0.2-0.1,0.5-0.3,0.4-0.8c0-0.7-0.6-1.3-1.3-1.3
-                            c-0.6,0-1.4,0.6-1.4,1.7s1,1.9,2.4,1.8c0.8,0,2.5-0.3,4.2-2.5c2-2.5,2.5-5.4,2.9-7.4l0.5-2.8c0.3,0,0.5,0.1,0.8,0.1
-                            c2.4,0.1,3.7-1.3,3.7-2.3c0-0.6-0.3-1.2-0.9-1.2c-0.4,0-0.8,0.3-1,0.8c-0.1,0.6,0.8,1.1,0.1,1.5c-0.5,0.3-1.4,0.6-2.7,0.4l0.3-1.3
-                            c0.5-2.6,1-5.7,3.2-5.8c0.2,0,0.8,0,0.8,0.4c0,0.2,0,0.2-0.2,0.5c-0.2,0.3-0.3,0.4-0.2,0.7c0,0.7,0.5,1.1,1.2,1.1
-                            c0.9,0,1.2-1,1.2-1.4c0-1.2-1.2-1.8-2.6-1.8c-1.5,0.1-2.8,0.9-3.7,2.1c-1.1,1.3-1.8,2.9-2.3,4.5c-0.9-0.8-1.6-1.8-3.1-2.3
-                            c-1.1-0.7-2.3-0.5-3.4,0.3c-0.5,0.4-0.8,1-1,1.6c-0.4,1.5,0.4,2.9,0.8,3.4l0.9,1c0.2,0.2,0.6,0.8,0.4,1.5c-0.3,0.8-1.2,1.3-2.1,1
-                            c-0.4-0.2-1-0.5-0.9-0.9c0.1-0.2,0.2-0.3,0.3-0.5s0.1-0.3,0.1-0.3c0.2-0.6-0.1-1.4-0.7-1.6c-0.6-0.2-1.2,0-1.3,0.8
-                            C4.3,38.4,4.7,40,6.8,40.8z M46.1,20.9c0-4.2-3.2-7.5-7.1-7.5h-3.8C34.8,10.8,32.7,9,30.2,9L-2.3,9.1c-2.8,0.1-4.9,2.4-4.9,5.4
-                            L-7,58.6c0,4.8,8.1,13.9,11.6,14.1l34.7-0.1c3.9,0,7-3.4,7-7.6L46.1,20.9z M-0.3,36.4c0-8.6,6.5-15.6,14.5-15.6
-                            c8,0,14.5,7,14.5,15.6S22.1,52,14.2,52C6.1,52-0.3,45-0.3,36.4z M42.1,65.1c0,1.8-1.5,3.1-3.1,3.1H4.6c-0.7,0-3-1.8-4.5-4.4h30.4
-                            c2.8,0,5-2.4,5-5.4V17.9h3.7c1.6,0,2.9,1.4,2.9,3.1V65.1L42.1,65.1z"/>
-                    </svg>
-
-                    Read the documentation to learn
-                    <a href="http://symfony.com/doc/{{ constant('Symfony\\Component\\HttpKernel\\Kernel::VERSION')[:3] }}/book/page_creation.html">
-                        How to create your first page in Symfony
-                    </a>
-                </p>
-            </div>
-
+            <div id="morris-area-chart" style="height: 345px;"></div>
         </div>
     </div>
-{% endblock %}
+    <div class="col-md-4 col-lg-3 col-sm-6 ">
+        <div class="bg-primary m-b-20">
+            <div id="myCarousel" class="carousel vcarousel slide vertical p-20">
+                <!-- Carousel items -->
+                <div class="carousel-inner ">
+                    <div class="active item"> <i class="fa fa-map-marker fa-2x text-white"></i>
+                        <p class="text-white">25th Jan</p>
+                        <h2 class="text-white">Now Get <span class="font-bold">50% Off</span><br/>
+                            on buy</h2>
+                        <button class="btn btn-default waves-effect waves-light m-t-15">Default</button>
+                    </div>
+                    <div class="item"> <i class="fa fa-map-marker fa-2x text-white"></i>
+                        <p class="text-white">25th Jan</p>
+                        <h2 class="text-white">Now Get <span class="font-bold">50% Off</span><br/>
+                            on buy</h2>
+                        <button class="btn btn-success waves-effect waves-light m-t-15">Default</button>
+                    </div>
+                    <div class="item"> <i class="fa fa-map-marker fa-2x text-white"></i>
+                        <p class="text-white">25th Jan</p>
+                        <h2 class="text-white">Now Get <span class="font-bold">50% Off</span><br/>
+                            on buy</h2>
+                        <button class="btn btn-white waves-effect waves-light m-t-15">Default</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-lg-3 col-sm-6">
+        <div class="bg-danger m-b-20">
+            <div id="myCarouse2" class="carousel vcarousel slide p-20">
+                <!-- Carousel items -->
+                <div class="carousel-inner ">
+                    <div class="active item">
+                        <h2 class="text-white">My Acting blown <span class="font-bold">Your Mind</span><br/>
+                            and you also laugh at <br/>
+                            the moment</h2>
+                        <div class="twi-user"><img src="/theme/dist/images/users/hritik.jpg" alt="user" class="img-circle img-responsive pull-left">
+                            <h4 class="text-white m-b-0">Govinda</h4>
+                            <p class="text-white">Actor</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <h2 class="text-white">My Acting blown <span class="font-bold">Your Mind</span><br/>
+                            and you also laugh at <br/>
+                            the moment</h2>
+                        <div class="twi-user"><img src="/theme/dist/images/users/genu.jpg" alt="user" class="img-circle img-responsive pull-left">
+                            <h4 class="text-white m-b-0">Govinda</h4>
+                            <p class="text-white">Actor</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <h2 class="text-white">My Acting blown <span class="font-bold">Your Mind</span><br/>
+                            and you also laugh at <br/>
+                            the moment</h2>
+                        <div class="twi-user"><img src="/theme/dist/images/users/ritesh.jpg" alt="user" class="img-circle img-responsive pull-left">
+                            <h4 class="text-white m-b-0">Govinda</h4>
+                            <p class="text-white">Actor</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--row -->
+<div class="row">
+    <div class="col-sm-6 col-xs-12 col-md-6 col-lg-3">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="white-box">
+                    <div class="bar-widget">
+                        <div class="table-box">
+                            <div class="cell text-left">
+                                <div id="sparkline1"></div>
+                            </div>
+                            <div class="cell text-right">
+                                <h2 class="m-t-0 m-b-5 font-light counter">3506</h2>
+                                <h5 class="text-muted m-b-0 m-t-0">Sales</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="white-box">
+                    <div class="bar-widget">
+                        <div class="table-box">
+                            <div class="cell text-left">
+                                <div id="sparkline2"></div>
+                            </div>
+                            <div class="cell text-right">
+                                <h2 class="m-t-0 m-b-5 font-light">18% Total</h2>
+                                <h5 class="text-muted m-b-0 m-t-0">Visitors</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Portlet -->
+    </div>
+    <div class="col-sm-6 col-xs-12 col-md-6 col-lg-3">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="white-box">
+                    <div class="col-md-5 col-sm-4">
+                        <h4 class="font-light">India,<br/>
+                            Ahmedabad</h4>
+                        <p><b>1,20,000 <br/>
+                                USD</b></p>
+                    </div>
+                    <div class="col-md-7 col-sm-8">
+                        <div id="sparkline3" class="text-center"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xs-12 col-md-6 col-lg-3">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="white-box">
+                    <div class="bar-widget">
+                        <div class="table-box">
+                            <div class="cell text-left">
+                                <div id="sparkline4"></div>
+                            </div>
+                            <div class="cell text-right">
+                                <h2 class="m-t-0 m-b-5 font-light counter">2547</h2>
+                                <h5 class="text-muted m-b-0 m-t-0">clicks</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="white-box">
+                    <div class="bar-widget">
+                        <div class="table-box">
+                            <div class="cell text-left">
+                                <div id="sparkline6"></div>
+                            </div>
+                            <div class="cell text-right">
+                                <h2 class="m-t-0 m-b-5 font-light counter">1354</h2>
+                                <h5 class="text-muted m-b-0 m-t-0">Views</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xs-12 col-md-6 col-lg-3">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="white-box">
+                    <div class="col-md-3 col-sm-3">
+                        <h4 class="font-light">Total<br/>
+                            Sales</h4>
+                        <p><b>1,20,000 <br/>
+                                USD</b></p>
+                    </div>
+                    <div class="col-md-9 col-sm-9">
+                        <div id="sparkline5"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <!-- /Portlet -->
+    </div>
+</div>
+<!--/ row -->
 
-{% block stylesheets %}
-<style>
-    body { background: #F5F5F5; font: 18px/1.5 sans-serif; }
-    h1, h2 { line-height: 1.2; margin: 0 0 .5em; }
-    h1 { font-size: 36px; }
-    h2 { font-size: 21px; margin-bottom: 1em; }
-    p { margin: 0 0 1em 0; }
-    a { color: #0000F0; }
-    a:hover { text-decoration: none; }
-    code { background: #F5F5F5; max-width: 100px; padding: 2px 6px; word-wrap: break-word; }
-    #wrapper { background: #FFF; margin: 1em auto; max-width: 800px; width: 95%; }
-    #container { padding: 2em; }
-    #welcome, #status { margin-bottom: 2em; }
-    #welcome h1 span { display: block; font-size: 75%; }
-    #icon-status, #icon-book { float: left; height: 64px; margin-right: 1em; margin-top: -4px; width: 64px; }
-    #icon-book { display: none; }
-
-    @media (min-width: 768px) {
-        #wrapper { width: 80%; margin: 2em auto; }
-        #icon-book { display: inline-block; }
-        #status a, #next a { display: block; }
-
-        @-webkit-keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
-        @keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
-        .sf-toolbar { opacity: 0; -webkit-animation: fade-in 1s .2s forwards; animation: fade-in 1s .2s forwards;}
-    }
-</style>
+<!-- row -->
+<div class="row">
+    <div class="col-md-4 col-xs-12 col-sm-6">
+        <div class="white-box">
+            <h3>To Do List</h3>
+            <ul class="list-task list-group" data-role="tasklist">
+                <li class="list-group-item" data-role="task">
+                    <div class="checkbox checkbox-primary">
+                        <input type="checkbox" id="inputSchedule" name="inputCheckboxesSchedule">
+                        <label for="inputSchedule"> <span>Schedule meeting</span> </label>
+                    </div>
+                </li>
+                <li class="list-group-item" data-role="task">
+                    <div class="checkbox checkbox-primary">
+                        <input type="checkbox" id="inputCall" name="inputCheckboxesCall">
+                        <label for="inputCall"> <span>Call clients for follow-up</span> <span class="label label-danger">Today</span> </label>
+                    </div>
+                </li>
+                <li class="list-group-item" data-role="task">
+                    <div class="checkbox checkbox-primary">
+                        <input type="checkbox" id="inputBook" name="inputCheckboxesBook">
+                        <label for="inputBook"> <span>Book flight for holiday</span> </label>
+                    </div>
+                </li>
+                <li class="list-group-item" data-role="task">
+                    <div class="checkbox checkbox-primary">
+                        <input type="checkbox" id="inputForward" name="inputCheckboxesForward">
+                        <label for="inputForward"> <span>Forward important tasks</span> <span class="label label-warning">2 weeks</span> </label>
+                    </div>
+                </li>
+                <li class="list-group-item" data-role="task">
+                    <div class="checkbox checkbox-primary">
+                        <input type="checkbox" id="inputRecieve" name="inputCheckboxesRecieve">
+                        <label for="inputRecieve"> <span>Recieve shipment</span> </label>
+                    </div>
+                </li>
+                <li class="list-group-item" data-role="task">
+                    <div class="checkbox checkbox-primary">
+                        <input type="checkbox" id="inputForward2" name="inputCheckboxesd">
+                        <label for="inputForward2"> <span>Important tasks</span> <span class="label label-success">2 weeks</span> </label>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-4 col-xs-12 col-sm-6">
+        <div class="white-box">
+            <h3>You have 5 new messages</h3>
+            <div class="message-center"> <a href="#">
+                    <div class="user-img"> <img src="/theme/dist/images/users/pawandeep.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
+                    <div class="mail-contnet">
+                        <h5>Pavan kumar</h5>
+                        <span class="mail-desc">Just see the my admin!</span> <span class="time">9:30 AM</span> </div>
+                </a> <a href="#">
+                    <div class="user-img"> <img src="/theme/dist/images/users/sonu.jpg" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
+                    <div class="mail-contnet">
+                        <h5>Sonu Nigam</h5>
+                        <span class="mail-desc">I've sung a song! See you at</span> <span class="time">9:10 AM</span> </div>
+                </a> <a href="#">
+                    <div class="user-img"> <img src="/theme/dist/images/users/arijit.jpg" alt="user" class="img-circle"> <span class="profile-status away pull-right"></span> </div>
+                    <div class="mail-contnet">
+                        <h5>Arijit Sinh</h5>
+                        <span class="mail-desc">I am a singer!</span> <span class="time">9:08 AM</span> </div>
+                </a> <a href="#">
+                    <div class="user-img"> <img src="/theme/dist/images/users/genu.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
+                    <div class="mail-contnet">
+                        <h5>Genelia Deshmukh</h5>
+                        <span class="mail-desc">I love to do acting and dancing</span> <span class="time">9:08 AM</span> </div>
+                </a> <a href="#" class="b-none">
+                    <div class="user-img"> <img src="/theme/dist/images/users/pawandeep.jpg" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
+                    <div class="mail-contnet">
+                        <h5>Pavan kumar</h5>
+                        <span class="mail-desc">Just see the my admin!</span> <span class="time">9:02 AM</span> </div>
+                </a> </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-xs-12 col-sm-6">
+        <div class="white-box">
+            <h3>Chat</h3>
+            <div class="chat-box">
+                <ul class="chat-list nicescroll" style="overflow: hidden;" tabindex="5005">
+                    <li>
+                        <div class="chat-image"> <img alt="male" src="/theme/dist/images/users/sonu.jpg"> </div>
+                        <div class="chat-body">
+                            <div class="chat-text">
+                                <h4>Sonu Nigam</h4>
+                                <p> Hi, All! </p>
+                                <b>10.00 am</b> </div>
+                        </div>
+                    </li>
+                    <li class="odd">
+                        <div class="chat-image"> <img alt="Female" src="/theme/dist/images/users/genu.jpg"> </div>
+                        <div class="chat-body">
+                            <div class="chat-text">
+                                <h4>Genelia</h4>
+                                <p> Hi, How are you Sonu? ur next concert? </p>
+                                <b>10.03 am</b> </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="chat-image"> <img alt="male" src="/theme/dist/images/users/ritesh.jpg"> </div>
+                        <div class="chat-body">
+                            <div class="chat-text">
+                                <h4>Ritesh</h4>
+                                <p> Hi, Sonu and Genelia, </p>
+                                <b>10.05 am</b> </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Say something">
+                            <span class="input-group-btn">
+                <button class="btn btn-success" type="button">Send</button>
+                </span> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
