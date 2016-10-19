@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new Dunglas\ActionBundle\DunglasActionBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Nelmio\SecurityBundle\NelmioSecurityBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

@@ -24,3 +24,51 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/, role: ROLE_ADMIN }
+
+nelmio_security:
+    signed_cookie:
+      names: []
+    clickjacking: ~
+    external_redirects:
+        abort: true
+    csp:
+        hosts: []
+        content_types: []
+        enforce:
+            level1_fallback: false
+            browser_adaptive: false
+            report-uri: %router.request_context.base_url%/nelmio/csp/report
+            default-src:
+                - 'self'
+            script-src:
+                - 'self'
+                - 'unsafe-inline'
+                - 'unsafe-eval'
+                - 'oss.maxcdn.com'
+            font-src:
+                - 'self'
+                - fonts.gstatic.com
+            style-src:
+                - 'self'
+                - 'unsafe-inline'
+                - fonts.googleapis.com
+            img-src:
+                - 'self'
+                - 'data:'
+            connect-src:
+                - 'self'
+            block-all-mixed-content: true
+            upgrade-insecure-requests: true
+        report_logger_service: monolog.logger.security
+
+    content_type:
+        nosniff: true
+
+    xss_protection:
+        enabled: true
+        mode_block: true
+
+    forced_ssl:
+      hsts_max_age: 2592000 # 30 days
+      hsts_subdomains: true
+      hsts_preload: true

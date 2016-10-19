@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c45967e35dc73d7a85959103671342e1",
-    "content-hash": "3a2aa270b01f66eec41cb11d30fdd29a",
+    "hash": "003f832a104bdcbb82daae590a87498c",
+    "content-hash": "7e26bc5720e29d4b957f68803bcbd916",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -954,63 +954,6 @@
             "time": "2014-01-12 16:20:24"
         },
         {
-            "name": "league/period",
-            "version": "3.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thephpleague/period.git",
-                "reference": "6a291739c326c8cc88b5c97098d182cc0d1b6a1d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/period/zipball/6a291739c326c8cc88b5c97098d182cc0d1b6a1d",
-                "reference": "6a291739c326c8cc88b5c97098d182cc0d1b6a1d",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5.9"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^1.10",
-                "phpunit/phpunit": "^4.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "League\\Period\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ignace Nyamagana Butera",
-                    "email": "nyamsprod@gmail.com",
-                    "homepage": "https://github.com/nyamsprod/",
-                    "role": "Developer"
-                }
-            ],
-            "description": "A time range immutable value object",
-            "homepage": "http://period.thephpleague.com",
-            "keywords": [
-                "date",
-                "dateinterval",
-                "dateperiod",
-                "datetime",
-                "interval",
-                "range",
-                "time"
-            ],
-            "time": "2016-09-19 10:33:45"
-        },
-        {
             "name": "monolog/monolog",
             "version": "1.21.0",
             "source": {
@@ -1087,6 +1030,66 @@
                 "psr-3"
             ],
             "time": "2016-07-29 03:23:52"
+        },
+        {
+            "name": "nelmio/security-bundle",
+            "version": "2.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nelmio/NelmioSecurityBundle.git",
+                "reference": "4b6d7f2a5519c53ffb59772b17aa923f47740ef7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nelmio/NelmioSecurityBundle/zipball/4b6d7f2a5519c53ffb59772b17aa923f47740ef7",
+                "reference": "4b6d7f2a5519c53ffb59772b17aa923f47740ef7",
+                "shasum": ""
+            },
+            "require": {
+                "paragonie/random_compat": "~1.0|~2.0",
+                "symfony/framework-bundle": "~2.3|~3.0",
+                "symfony/security": "~2.3|~3.0"
+            },
+            "require-dev": {
+                "doctrine/cache": "^1.0",
+                "phpunit/phpunit": "^4.5",
+                "psr/cache": "^1.0",
+                "twig/twig": "^1.24",
+                "ua-parser/uap-php": "^3.4"
+            },
+            "suggest": {
+                "ua-parser/uap-php": "To allow adapt CSP directives given the user-agent"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Nelmio\\SecurityBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nelmio",
+                    "homepage": "http://nelm.io"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://github.com/nelmio/NelmioSecurityBundle/contributors"
+                }
+            ],
+            "description": "Extra security-related features for Symfony: signed/encrypted cookies, HTTPS/SSL/HSTS handling, cookie session storage, ...",
+            "keywords": [
+                "security"
+            ],
+            "time": "2016-10-19 10:32:05"
         },
         {
             "name": "paragonie/random_compat",
@@ -2575,6 +2578,63 @@
                 "menu"
             ],
             "time": "2016-09-22 12:24:40"
+        },
+        {
+            "name": "league/period",
+            "version": "3.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/period.git",
+                "reference": "6a291739c326c8cc88b5c97098d182cc0d1b6a1d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/period/zipball/6a291739c326c8cc88b5c97098d182cc0d1b6a1d",
+                "reference": "6a291739c326c8cc88b5c97098d182cc0d1b6a1d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^1.10",
+                "phpunit/phpunit": "^4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\Period\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ignace Nyamagana Butera",
+                    "email": "nyamsprod@gmail.com",
+                    "homepage": "https://github.com/nyamsprod/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A time range immutable value object",
+            "homepage": "http://period.thephpleague.com",
+            "keywords": [
+                "date",
+                "dateinterval",
+                "dateperiod",
+                "datetime",
+                "interval",
+                "range",
+                "time"
+            ],
+            "time": "2016-09-19 10:33:45"
         },
         {
             "name": "misd/phone-number-bundle",
