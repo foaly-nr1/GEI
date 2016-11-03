@@ -13,10 +13,16 @@ organiser.registerAll('./gulp-tasks', {
     dest: path.join(dest, 'css'),
   },
   'copy-static': {
-    src: path.join(src, '**/*'),
-    dest,
-    map: {
-      [path.join(src, 'pages/**/*.*')]: dest,
+    theme: {
+      src: path.join(src, '**/*'),
+      dest,
+      map: {
+        [path.join(src, 'pages/**/*.*')]: dest,
+      },
+    },
+    gei: {
+      src: 'web/gei/src/js/*.js',
+      dest: 'web/gei/build/js',
     },
   },
   'link-dependencies': {

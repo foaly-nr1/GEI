@@ -199,18 +199,31 @@
     <!-- /#page-wrapper -->
 </div>
 <!-- /#wrapper -->
+
+{% for modalId in [ 'modal', 'submodal', 'submodal-2' ] %}
+<div id="{{ modalId }}"
+     class="{% if loop.first is sameas(false) %}submodal {% endif %}modal fade"
+     role="dialog" aria-hidden="true" data-backdrop="static"
+>
+    <div class="modal-dialog{% if loop.first %} modal-lg{% endif %}">
+        <div class="modal-content"></div>
+    </div>
+</div>
+{% endfor %}
+
 <script src="/vendor/x-div/dist/x-div.js"></script>
 <script src="/theme/dist/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="/theme/dist/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- Menu Plugin JavaScript -->
+
 <script src="/theme/dist/bower_components/metisMenu/dist/metisMenu.min.js"></script>
-<!--Nice scroll JavaScript -->
 <script src="/theme/dist/js/jquery.nicescroll.js"></script>
 
-<!--Wave Effects -->
 <script src="/theme/dist/js/waves.js"></script>
-<!-- Custom Theme JavaScript -->
 <script src="/theme/dist/js/myadmin.js"></script>
+
+<script src="/gei/build/js/bs3-modal-remote.js"></script>
+<script src="/gei/build/js/bs3-myadmin-modal-loader.js"></script>
+<script src="/gei/build/js/bs3-submodal.js"></script>
 
 {% block javascripts %}{% endblock %}
 <script>
