@@ -28,4 +28,8 @@ organiser.registerAll('./gulp-tasks', {
     startPath: path.join(dest, 'index.html'),
     baseDir: './',
   },
+  sass: {
+    src: 'web/gei/src/scss/layout.scss',
+    dest: 'web/gei/build/css',
+  },
 });
