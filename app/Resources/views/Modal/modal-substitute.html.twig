@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title block('modalTitle') %}
+
+{% use 'AppBundle::datatable-dependencies.html.twig' with
+    stylesheets as datatable_stylesheets,
+    javascripts as datatable_javascripts
+%}
+
+{% block stylesheets %}
+{{ parent() }}
+{{ block('datatable_stylesheets') }}
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+{{ block('datatable_javascripts') }}
+{% endblock %}
+
+{% block body %}
+<div class="content-box box-shadow big-box">
+    <div class="row">
+        <div class="container">
+            {{ block('modalContent') }}
+        </div>
+    </div>
+</div>
+{% endblock %}

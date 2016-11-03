@@ -1,0 +1,4 @@
+{% extends (app.request.xmlHttpRequest or app.request.headers.get('X-Requested-With') is sameas('fetch'))
+    ? 'Modal/modal-outer.html.twig'
+    : 'Modal/modal-substitute.html.twig'
+%}

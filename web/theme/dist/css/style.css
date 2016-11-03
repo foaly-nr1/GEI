@@ -1318,6 +1318,29 @@ table.dataTable thead .sorting:after {
 .panel-default a:hover {
   color: #2c313b;
 }
+.panel-inverse {
+  border-color: #4c5667;
+}
+.panel-inverse .panel-heading {
+  border-color: #4c5667;
+  color: #ffc400;
+  background-color: #4c5667;
+  border-bottom: 1px solid rgba(120, 130, 140, 0.13);
+}
+.panel-inverse .panel-body {
+  color: #222;
+}
+.panel-inverse .panel-footer {
+  background: #ffffff;
+  color: #222;
+  border-top: 1px solid rgba(120, 130, 140, 0.13);
+}
+.panel-inverse a {
+  color: #222;
+}
+.panel-inverse a:hover {
+  color: #2c313b;
+}
 .full-panel-info {
   border-color: #13dafe;
 }

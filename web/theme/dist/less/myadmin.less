@@ -512,11 +512,11 @@ label{
 .nav-tabs > li > a {
   border-radius:@radius;
   color:@dark;
-  &:hover, &:focus{
-    background:@white;
 
-    }
+  &.btn-primary {
+    color: @white;
   }
+}
 
 .modal-content{
   border-radius:@radius;
@@ -868,10 +868,11 @@ label{
 
 }
 .btn-primary{
-  background: @primary !important;
-  border: 1px solid @primary;
+  background:@primary;
+  color: @white;
+  border:1px solid @primary;
   &:hover{
-    background: @primary !important;
+    background:@primary;
     opacity:0.8;
     border:1px solid @primary;
   }
@@ -1330,6 +1331,31 @@ table.dataTable thead .sorting:after {
         }
     }
 }
+
+.panel-inverse {
+  border-color: @inverse;
+  .panel-heading {
+    border-color: @inverse;
+    color: @primary;
+    background-color: @inverse;
+    border-bottom: 1px solid @border;
+  }
+  .panel-body {
+    color: @dark;
+  }
+  .panel-footer {
+    background: @white;
+    color: @dark;
+    border-top: 1px solid @border;
+  }
+  a {
+    color: @dark;
+    &:hover {
+      color: darken(@inverse, 15%);
+    }
+  }
+}
+
 .full-panel-info{
     border-color: @info;
     .panel-heading {
@@ -1452,6 +1478,7 @@ table.dataTable thead .sorting:after {
         }
     }
 }
+
 .full-panel-inverse{
     border-color: @inverse;
     .panel-heading {

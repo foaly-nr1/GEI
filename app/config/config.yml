@@ -20,11 +20,10 @@ framework:
         engines: ['twig']
     default_locale:  "%locale%"
     trusted_hosts:   ~
-    trusted_proxies: ~
+    trusted_proxies: ['10.113.0.1', '10.113.0.201'] # Layershift
     session:
         name: GOLDENEAGLE
         handler_id: session.handler.native_file
-        save_path: /tmp
         cookie_secure: true
     fragments:       ~
     http_method_override: true
@@ -33,6 +32,10 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    date:
+        timezone: Europe/London
+    form_themes:
+         - 'bootstrap_3_horizontal_layout.html.twig'
 
 doctrine:
     dbal:
@@ -42,12 +45,24 @@ doctrine:
         dbname:   "%database_name%"
         user:     "%database_user%"
         password: "%database_password%"
-        charset:  UTF8
-
+        charset:  utf8mb4
+        default_table_options:
+            charset: utf8mb4
+            collate: utf8mb4_bin
+        types:
+            phone_number: Misd\PhoneNumberBundle\Doctrine\DBAL\Types\PhoneNumberType
+            json: Doctrine\DBAL\Types\JsonArrayType # Type json will be introduced in doctrine/dbal@2.6
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
+
+stof_doctrine_extensions:
+    default_locale: %locale%
+    orm:
+        default:
+            timestampable: true
+            blameable: true
 
 swiftmailer:
     transport: "%mailer_transport%"
@@ -60,3 +75,16 @@ fos_user:
   db_driver: orm
   firewall_name: main
   user_class: AppBundle\Entity\User
+
+fos_js_routing:
+  cache_control:
+    public: false
+    maxage: 3600
+    smaxage: 3600
+    expires: 60 minutes
+    vary: [ Cookie ]
+
+dunglas_action: ~
+
+doctrine_date_time_immutable_types:
+    register: replace

@@ -7,6 +7,29 @@ app_applicants_list:
   path: /applicants/list
   defaults: { _controller: AppBundle\Action\Contacts\ApplicantsList:__invoke }
 
+app_tenants:
+  path: /tenants
+  defaults: { _controller: AppBundle\Action\Contacts\Tenants:__invoke }
+  methods: [GET]
+
 app_tenants_add:
   path: /tenants/add
   defaults: { _controller: AppBundle\Action\Contacts\TenantsAdd:__invoke }
+
+app_tenants_add_personal:
+  path: /tenants/add/personal
+  defaults: { _controller: AppBundle\Action\Contacts\TenantsEditPersonal:__invoke }
+
+app_tenants_edit:
+  path: /tenants/{tenantId}
+  requirements:
+    tenantId: \d+
+  defaults: { _controller: AppBundle\Action\Contacts\TenantsEdit:__invoke }
+  options:
+    expose: true
+
+app_tenants_edit_personal:
+  path: /tenants/{tenantId}/personal
+  requirements:
+    tenantId: \d+
+  defaults: { _controller: AppBundle\Action\Contacts\TenantsEditPersonal:__invoke }

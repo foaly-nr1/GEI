@@ -67,14 +67,13 @@ class Tenant
     private $id;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
-     * @Assert\Date
+     * @ORM\Column(type="string", nullable=false)
+     * @Assert\NotBlank
      */
     private $type;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
-     * @Assert\Date
+     * @ORM\Column(type="string", nullable=true)
      */
     private $subType;
 
@@ -84,8 +83,7 @@ class Tenant
     private $negotiator;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
-     * @Assert\Date
+     * @ORM\Column(type="string", nullable=true)
      */
     private $source;
 
@@ -96,11 +94,13 @@ class Tenant
 
     /**
      * @ORM\Column(type="string", nullable=false)
+     * @Assert\NotBlank
      */
     private $firstName;
 
     /**
      * @ORM\Column(type="string", nullable=false)
+     * @Assert\NotBlank
      */
     private $lastName;
 
@@ -133,14 +133,12 @@ class Tenant
 
     /**
      * @ORM\OneToMany(targetEntity="TenantEmail", mappedBy="tenant", cascade={"all"}, orphanRemoval=true)
-     * @Assert\Count(min=1, minMessage="Enter at least one email")
      * @Assert\Valid
      */
     private $emails;
 
     /**
      * @ORM\OneToMany(targetEntity="TenantPhone", mappedBy="tenant", cascade={"all"}, orphanRemoval=true)
-     * @Assert\Count(min=1, minMessage="Enter at least one phone number")
      * @Assert\Valid
      */
     private $phones;
@@ -164,6 +162,166 @@ class Tenant
     {
         $this->emails = new ArrayCollection();
         $this->phones = new ArrayCollection();
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string|null $type
+     * @return $this
+     */
+    public function setType(string $type = null)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getSubType()
+    {
+        return $this->subType;
+    }
+
+    /**
+     * @param string|null $subType
+     * @return $this
+     */
+    public function setSubType(string $subType = null)
+    {
+        $this->subType = $subType;
+
+        return $this;
+    }
+
+    /**
+     * @return User|null
+     */
+    public function getNegotiator()
+    {
+        return $this->negotiator;
+    }
+
+    /**
+     * @param User|null $negotiator
+     * @return $this
+     */
+    public function setNegotiator(User $negotiator = null)
+    {
+        $this->negotiator = $negotiator;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getSource()
+    {
+        return $this->source;
+    }
+
+    /**
+     * @param string|null $source
+     * @return $this
+     */
+    public function setSource(string $source = null)
+    {
+        $this->source = $source;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param string|null $title
+     * @return $this
+     */
+    public function setTitle(string $title = null)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * @param string|null $firstName
+     * @return $this
+     */
+    public function setFirstName(string $firstName = null)
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * @param string $lastName
+     * @return $this
+     */
+    public function setLastName(string $lastName)
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getNationality()
+    {
+        return $this->nationality;
+    }
+
+    /**
+     * @param string|null $nationality
+     * @return $this
+     */
+    public function setNationality(string $nationality = null)
+    {
+        $this->nationality = $nationality;
+
+        return $this;
     }
 
     /**

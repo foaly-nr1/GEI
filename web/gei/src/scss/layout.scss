@@ -23,3 +23,18 @@ $gold: #ffc400;
     }
   }
 }
+
+.modal-content .cssload-speeding-wheel {
+  margin: 25vh auto;
+}
+
+@media screen and (min-width: 768px) {
+  .modal {
+    .modal-dialog {
+      width: 800px;
+    }
+    .modal-dialog.modal-lg {
+      width: 1000px;
+    }
+  }
+}

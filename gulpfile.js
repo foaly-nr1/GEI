@@ -23,6 +23,7 @@ organiser.registerAll('./gulp-tasks', {
     gei: {
       src: 'web/gei/src/js/*.js',
       dest: 'web/gei/build/js',
+      map: {},
     },
   },
   'link-dependencies': {

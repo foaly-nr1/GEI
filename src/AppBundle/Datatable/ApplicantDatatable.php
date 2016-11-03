@@ -35,7 +35,7 @@ class ApplicantDatatable extends AbstractDatatableView
                 'title' => $this->translator->trans('datatables.actions.title'),
                 'actions' => [
                     [
-                        'route' => 'app_applicant_edit',
+                        'route' => 'app_tenants_edit',
                         'route_parameters' => [
                             'contactId' => 'id',
                         ],

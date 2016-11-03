@@ -22,10 +22,13 @@
     "lodash": "^4.16.2"
   },
   "dependencies": {
+    "chosen-js": "^1.6.2",
     "datatables": "^1.10.12",
     "datatables-responsive": "^1.0.7",
     "datatables-search": "^1.0.0",
     "datatables-tabletools": "^2.2.2",
+    "fl-form": "^0.1.12",
+    "moment": "^2.15.2",
     "x-div": "^1.0.44"
   }
 }

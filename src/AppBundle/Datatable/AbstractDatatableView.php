@@ -17,7 +17,7 @@ abstract class AbstractDatatableView extends BaseAbstractDatatableView
 
         $this->features->set([
             'paging' => false,
-            'scroll_y' => 'calc(100vh - 365px)',
+            'scroll_y' => 'calc(100vh - 375px)',
         ]);
 
         $this->options->set([

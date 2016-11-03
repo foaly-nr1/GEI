@@ -1,0 +1,20 @@
+tenant:
+  subtype:
+    employed: Employed
+    self_employed: Self Employed
+    student: Student
+    retired: Retired
+    hb: HB
+    sharer: Sharer
+    room_let: Room Let
+    company: Company
+    commercial: Commercial
+    holiday: Holiday
+    medical: Medical
+    complimentary: Complimentary
+    other: Other
+    ftb: FTP
+    investor: Investor
+    cash_buyer: Cash Buyer
+    sold_sstc: Sold SSTC
+    property_to_sell: Property to Sell

@@ -1,0 +1,42 @@
+{% extends 'Modal/modal.html.twig' %}
+
+{% block breadcrumbs %}
+<li><a href="{{ path('app_tenants') }}">Tenants</a></li>
+<li class="active">Add Tenant</li>
+{% endblock %}
+
+{% block modalTitle %}Add Tenant{% endblock %}
+
+{% use 'AppBundle:Contacts:dependencies.html.twig' with
+    stylesheets as additional_stylesheets,
+    javascripts as additional_javascripts
+%}
+
+{% block stylesheets %}
+{{ parent() }}
+{{ block('additional_stylesheets') }}
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+{{ block('additional_javascripts') }}
+{% endblock %}
+
+{% block modalContent %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <i class="fa fa-child"></i> Personal Information
+            </div>
+            <div class="panel-wrapper collapse in" aria-expanded="true">
+                <div class="panel-body">
+                    <x-div data-controller="/vendor/fl-form/dist/fl-form" data-config="flFormOptions">
+                        {{ render(path('app_tenants_add_personal')) }}
+                    </x-div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

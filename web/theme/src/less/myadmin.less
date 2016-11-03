@@ -1331,6 +1331,31 @@ table.dataTable thead .sorting:after {
         }
     }
 }
+
+.panel-inverse {
+  border-color: @inverse;
+  .panel-heading {
+    border-color: @inverse;
+    color: @primary;
+    background-color: @inverse;
+    border-bottom: 1px solid @border;
+  }
+  .panel-body {
+    color: @dark;
+  }
+  .panel-footer {
+    background: @white;
+    color: @dark;
+    border-top: 1px solid @border;
+  }
+  a {
+    color: @dark;
+    &:hover {
+      color: darken(@inverse, 15%);
+    }
+  }
+}
+
 .full-panel-info{
     border-color: @info;
     .panel-heading {
@@ -1453,6 +1478,7 @@ table.dataTable thead .sorting:after {
         }
     }
 }
+
 .full-panel-inverse{
     border-color: @inverse;
     .panel-heading {

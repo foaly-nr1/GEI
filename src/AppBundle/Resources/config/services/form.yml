@@ -1,0 +1,14 @@
+services:
+  app.form_handler:
+    abstract: true
+    arguments:
+      - "@doctrine.orm.entity_manager"
+
+  app.form_handler.generic:
+    class: AppBundle\Form\Handler\GenericFormHandler
+    parent: app.form_handler
+
+  app.form_extension.help_text:
+    class: AppBundle\Form\Extension\DateTimeExtension
+    tags:
+      - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\DateTimeType }
