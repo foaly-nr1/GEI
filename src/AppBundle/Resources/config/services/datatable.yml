@@ -1,0 +1,10 @@
+services:
+  app.datatable.abstract:
+    abstract: true
+    parent: sg_datatables.datatable.abstract
+    tags:
+        - { name: sg.datatable.view }
+
+  app.datatable.applicant:
+    class: AppBundle\Datatable\ApplicantDatatable
+    parent: app.datatable.abstract

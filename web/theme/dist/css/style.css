@@ -490,9 +490,8 @@ pre {
           border-radius: 0px;
   color: #222;
 }
-.nav-tabs > li > a:hover,
-.nav-tabs > li > a:focus {
-  background: #ffffff;
+.nav-tabs > li > a.btn-primary {
+  color: #ffffff;
 }
 .modal-content {
   -webkit-border-radius: 0px;
@@ -817,6 +816,7 @@ pre {
 }
 .btn-primary {
   background: #ffc400;
+  color: #ffffff;
   border: 1px solid #ffc400;
 }
 .btn-primary:hover {

@@ -1,3 +1,25 @@
+$gold: #ffc400;
+
 .tabbable {
   margin-bottom: 20px;
+
+  .nav-tabs {
+    border: 1px solid #eaecf2;
+    border-width: 1px 0;
+
+    > li.active > a,
+    > li.active > a:focus,
+    > li.active > a:hover {
+      background-color: inherit;
+      border-color: $gold;
+      border-width: 0 0 2px;
+      color: $gold;
+    }
+    > li > a:hover,
+    > li > a:focus {
+      background-color: transparent;
+      color: $gold;
+      border-color: inherit;
+    }
+  }
 }

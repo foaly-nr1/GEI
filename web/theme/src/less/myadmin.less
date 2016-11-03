@@ -512,11 +512,11 @@ label{
 .nav-tabs > li > a {
   border-radius:@radius;
   color:@dark;
-  &:hover, &:focus{
-    background:@white;
 
-    }
+  &.btn-primary {
+    color: @white;
   }
+}
 
 .modal-content{
   border-radius:@radius;
@@ -869,6 +869,7 @@ label{
 }
 .btn-primary{
   background:@primary;
+  color: @white;
   border:1px solid @primary;
   &:hover{
     background:@primary;

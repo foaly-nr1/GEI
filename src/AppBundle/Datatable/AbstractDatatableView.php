@@ -31,4 +31,13 @@ abstract class AbstractDatatableView extends BaseAbstractDatatableView
             }
         }
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getName()
+    {
+        $reflect = new \ReflectionClass($this);
+        return strtolower(str_replace(' ', '_', trim(preg_replace('/([A-Z])/', ' $0', $reflect->getShortName()))));
+    }
 }

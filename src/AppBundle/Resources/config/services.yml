@@ -1,2 +1,3 @@
 imports:
-    - { resource: 'services/menu.yml' }
+  - { resource: 'services/datatable.yml' }
+  - { resource: 'services/menu.yml' }

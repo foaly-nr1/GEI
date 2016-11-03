@@ -1,28 +1,18 @@
 {% extends 'base.html.twig' %}
 
+{% use 'AppBundle::datatable-dependencies.html.twig' with
+    stylesheets as datatable_stylesheets,
+    javascripts as datatable_javascripts
+%}
+
 {% block stylesheets %}
 {{ parent() }}
-<link rel="stylesheet" href="/theme/build/bower_components/DataTables/media/css/jquery.dataTables.css">
-<link rel="stylesheet" href="/theme/build/bower_components/datatables-tabletools/css/dataTables.tableTools.css">
-<link rel="stylesheet" href="/triprhq/build/css/jquery.dataTables.css">
+{{ block('datatable_stylesheets') }}
 {% endblock %}
 
 {% block javascripts %}
 {{ parent() }}
-<script src="/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
-<script src="/vendor/datatables-responsive/js/dataTables.responsive.js"></script>
-<script src="/vendor/datatables-tabletools/js/dataTables.tableTools.js"></script>
-
-<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
-<script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
-<script>
-(function( i, s, q, l ) {
-    for( q = window._q(), l = q.length; i < l; ) {
-        $.apply( this, s.call( q[ i++ ] ) );
-    }
-    window._q = undefined;
-}( 0, Array.prototype.slice ));
-</script>
+{{ block('datatable_javascripts') }}
 {% endblock %}
 
 {% block body %}
@@ -38,17 +28,6 @@
         </div>
     </div>
 </x-div>
-
-<script>
-(function(a){
-    _q = function(){return a;};
-    $ = function(f){
-        typeof f === "function" && a.push(arguments);
-        return $;
-    };
-    jQuery = $.ready = $;
-}([]));
-</script>
 
 {{ datatable_render(datatable) }}
 {% endblock %}

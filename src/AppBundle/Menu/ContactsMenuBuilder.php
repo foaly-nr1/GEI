@@ -32,9 +32,9 @@ class ContactsMenuBuilder extends AbstractMenuBuilder
      */
     public function createApplicantsMenu()
     {
-//        $this->addActionButton([
-//            'route' => 'app_tenants_add',
-//        ]);
+        $this->addActionButton([
+            'route' => 'app_tenants_add',
+        ]);
 
         return $this->menu;
     }

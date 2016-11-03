@@ -2,6 +2,8 @@
 
 namespace AppBundle\Datatable;
 
+use AppBundle\Entity\Tenant;
+
 class ApplicantDatatable extends AbstractDatatableView
 {
     public function buildDatatable(array $options = [])
@@ -55,14 +57,6 @@ class ApplicantDatatable extends AbstractDatatableView
      */
     public function getEntity()
     {
-        return 'AppBundle\Entity\Contact';
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
-    {
-        return 'applicant_datatable';
+        return Tenant::class;
     }
 }

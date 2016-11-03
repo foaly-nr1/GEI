@@ -6,3 +6,7 @@ app_applicants:
 app_applicants_list:
   path: /applicants/list
   defaults: { _controller: AppBundle\Action\Contacts\ApplicantsList:__invoke }
+
+app_tenants_add:
+  path: /tenants/add
+  defaults: { _controller: AppBundle\Action\Contacts\TenantsAdd:__invoke }

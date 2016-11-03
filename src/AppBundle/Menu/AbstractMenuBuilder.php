@@ -31,8 +31,11 @@ abstract class AbstractMenuBuilder
         $this->menu->addChild($label, $options)
             ->setExtra('icon', $icon)
             ->setAttribute('class', 'pull-right')
-            ->setLinkAttribute('data-toggle', 'modal')
-            ->setLinkAttribute('data-target', '#modal')
+            ->setLinkAttributes([
+                'data-toggle' => 'modal',
+                'data-target' => '#modal',
+                'class' => 'btn btn-primary',
+            ])
         ;
 
         return $this;
