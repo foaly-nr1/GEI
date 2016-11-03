@@ -16,6 +16,12 @@
             "Tests\\": "tests/"
         }
     },
+    "repositories": [
+      {
+        "type": "vcs",
+        "url": "https://github.com/foaly-nr1/DatatablesBundle"
+      }
+    ],
     "require": {
         "php": ">=5.5.9",
         "symfony/symfony": "3.1.*",
@@ -31,7 +37,8 @@
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "nelmio/security-bundle": "^2.0",
         "friendsofsymfony/jsrouting-bundle": "^1.6",
-        "sg/datatablesbundle": "dev-patch-view-options-2"
+        "sg/datatablesbundle": "dev-patch-view-options-2",
+        "dunglas/action-bundle": "^0.3.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

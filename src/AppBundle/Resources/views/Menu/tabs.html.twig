@@ -14,7 +14,7 @@
 
 {% block label %}
     {% spaceless %}
-        {% if item.attribute('icon') %}<i class="fa fa-{{ item.attribute('icon') }}" aria-hidden="true"></i>{% endif %}
+        {% if item.extra('icon') %}<i class="fa fa-{{ item.attribute('icon') }}" aria-hidden="true"></i>{% endif %}
         {{ parent() }}
     {% endspaceless %}
 {% endblock %}

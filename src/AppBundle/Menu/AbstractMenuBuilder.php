@@ -29,7 +29,7 @@ abstract class AbstractMenuBuilder
     {
         // can use routeParameters option, too
         $this->menu->addChild($label, $options)
-            ->setAttribute('icon', $icon)
+            ->setExtra('icon', $icon)
             ->setAttribute('class', 'pull-right')
             ->setLinkAttribute('data-toggle', 'modal')
             ->setLinkAttribute('data-target', '#modal')

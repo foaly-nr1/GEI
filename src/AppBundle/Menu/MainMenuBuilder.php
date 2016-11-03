@@ -19,41 +19,41 @@ class MainMenuBuilder
         $this->factory = $factory;
     }
 
-    public function createMainMenu(array $options)
+    public function createMainMenu()
     {
         $menu = $this->factory->createItem('root');
 
         $menu->addChild('Dashboard', [
             'route' => 'app_dashboard',
-        ])->setAttribute('icon', 'home');
+        ])->setExtra('icon', 'home');
 
         $menu->addChild('Contacts', [
             'route' => 'app_applicants',
-        ])->setAttribute('icon', 'users');
+        ])->setExtra('icon', 'users');
 
         $menu->addChild('Properties', [
             'uri' => '#properties',
-        ])->setAttribute('icon', 'building-o');
+        ])->setExtra('icon', 'building-o');
 
         $menu->addChild('Tenancies', [
             'uri' => '#tenancies',
-        ])->setAttribute('icon', 'key');
+        ])->setExtra('icon', 'key');
 
         $menu->addChild('Management', [
             'uri' => '#management',
-        ])->setAttribute('icon', 'wrench');
+        ])->setExtra('icon', 'wrench');
 
         $menu->addChild('Diaries', [
             'uri' => '#diaries',
-        ])->setAttribute('icon', 'calendar-o');
+        ])->setExtra('icon', 'calendar-o');
 
         $menu->addChild('HR', [
             'uri' => '#hr',
-        ])->setAttribute('icon', 'black-tie');
+        ])->setExtra('icon', 'black-tie');
 
         $menu->addChild('Reports', [
             'uri' => '#reports',
-        ])->setAttribute('icon', 'bar-chart');
+        ])->setExtra('icon', 'bar-chart');
 
         return $menu;
     }
