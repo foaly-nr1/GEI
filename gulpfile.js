@@ -29,7 +29,8 @@ organiser.registerAll('./gulp-tasks', {
     baseDir: './',
   },
   sass: {
-    src: 'web/gei/src/scss/layout.scss',
+    watch: 'web/gei/src/scss/*.scss',
+    src: 'web/gei/src/scss/*.scss',
     dest: 'web/gei/build/css',
   },
 });

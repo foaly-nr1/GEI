@@ -2,6 +2,7 @@
 const gulp = require('gulp');
 const organiser = require('gulp-organiser');
 const tasks = [
+  require('./sass'),
   require('./less'),
   require('./copy-static'),
   require('./link-dependencies'),
