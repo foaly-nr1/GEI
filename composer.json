@@ -40,7 +40,8 @@
         "sg/datatablesbundle": "dev-patch-view-options-2",
         "dunglas/action-bundle": "^0.3.0",
         "vasek-purchart/doctrine-date-time-immutable-types-bundle": "^0.4.1",
-        "moneyphp/money": "^3.0"
+        "moneyphp/money": "^3.0",
+        "egulias/email-validator": "^2.1"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

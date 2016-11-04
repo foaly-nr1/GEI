@@ -1,0 +1,19 @@
+{% block collection_widget %}
+    {% if allow_add %}
+        <x-div data-controller="/gei/build/js/form-type-collection">
+    {% endif %}
+    {% spaceless %}
+        {% if prototype is defined %}
+            {% set attr = attr|merge({'data-prototype': form_row(prototype)}) %}
+            {% set attr = attr|merge({'data-prototype-name': prototype.vars.name}) %}
+        {% endif %}
+        {% set attr = attr|merge({'data-allow-add': allow_add ? 1 : 0}) %}
+        {% set attr = attr|merge({'data-allow-delete': allow_delete ? 1 : 0 }) %}
+        {% set attr = attr|merge({'data-name-prefix': full_name}) %}
+        {% set attr = attr|merge({class: (attr.class|default('') ~ ' form-collection')|trim}) %}
+        {{ block('form_widget') }}
+    {% endspaceless %}
+    {% if allow_add %}
+        </x-div>
+    {% endif %}
+{% endblock collection_widget %}

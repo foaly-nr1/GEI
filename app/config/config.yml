@@ -36,6 +36,9 @@ twig:
         timezone: Europe/London
     form_themes:
          - 'bootstrap_3_horizontal_layout.html.twig'
+         - 'Form/base.html.twig'
+         - 'Form/collection-type.html.twig'
+         - 'Form/phone-type.html.twig'
 
 doctrine:
     dbal:

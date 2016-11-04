@@ -78,7 +78,10 @@ class TenantType extends AbstractType
                 'choices' => [
                     'Ms' => Tenant::TITLE_MS,
                     'Mr' => Tenant::TITLE_MR,
-                ]
+                ],
+                'attr' => [
+                    'class' => 'js-chosen-select',
+                ],
             ])
             ->add('firstName', Type\TextType::class, [
                 'required' => true,
@@ -99,6 +102,30 @@ class TenantType extends AbstractType
             ])
             ->add('postcode', Type\TextType::class, [
                 'required' => false,
+            ])
+            ->add('emails', Type\CollectionType::class, [
+                'entry_type' => TenantEmailType::class,
+                'required' => true,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'delete_empty' => true,
+                'prototype' => true,
+                'by_reference' => false,
+                'entry_options' => [
+                    'label' => false,
+                ],
+            ])
+            ->add('phones', Type\CollectionType::class, [
+                'entry_type' => TenantPhoneType::class,
+                'required' => true,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'delete_empty' => true,
+                'prototype' => true,
+                'by_reference' => false,
+                'entry_options' => [
+                    'label' => false,
+                ],
             ])
         ;
 
