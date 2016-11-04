@@ -37,7 +37,7 @@ class ApplicantDatatable extends AbstractDatatableView
                     [
                         'route' => 'app_tenants_edit',
                         'route_parameters' => [
-                            'contactId' => 'id',
+                            'tenantId' => 'id',
                         ],
                         'icon' => 'fa fa-pencil',
                         'attributes' => [

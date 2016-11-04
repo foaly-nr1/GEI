@@ -97,7 +97,7 @@
     filter:none !important;
     -webkit-box-shadow: none!important;
     box-shadow: none!important;
-    border-radius: 4px!important;
+    border-radius: 0 !important;
     height: 38px!important;
     line-height: 26px!important;
     padding: 4px 12px!important;
@@ -107,7 +107,7 @@
 
     b,
     .search-choice-close {
-      margin-top: 4px;
+      margin-top: 7px;
     }
     > span {
       margin-top: 1px;

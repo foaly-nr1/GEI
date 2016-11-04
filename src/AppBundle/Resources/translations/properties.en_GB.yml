@@ -1,0 +1,5 @@
+property:
+  type:
+    flat: Flat
+    house: House
+    other: Other

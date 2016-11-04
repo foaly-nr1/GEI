@@ -3,19 +3,18 @@
 namespace AppBundle\Action\Contacts;
 
 use AppBundle\Entity\Tenant;
-use AppBundle\Entity\User;
 use AppBundle\Form\Handler\GenericFormHandler;
-use AppBundle\Form\Type\TenantType;
+use AppBundle\Form\Type\PropertyCriteriaType;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\FormFactoryInterface;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\RouterInterface;
 
-class TenantsEditPersonal
+class TenantsEditCriteria
 {
     /**
      * Contact repository
@@ -50,18 +49,12 @@ class TenantsEditPersonal
     private $flashBag;
 
     /**
-     * @var User
-     */
-    private $user;
-
-    /**
      * @param EntityRepository $repository
      * @param FormFactoryInterface $factory
      * @param GenericFormHandler $handler
      * @param RouterInterface $router
      * @param \Twig_Environment $twig
      * @param FlashBagInterface $flashBag
-     * @param User $user
      */
     public function __construct(
         EntityRepository $repository,
@@ -69,8 +62,7 @@ class TenantsEditPersonal
         GenericFormHandler $handler,
         RouterInterface $router,
         \Twig_Environment $twig,
-        FlashBagInterface $flashBag,
-        User $user
+        FlashBagInterface $flashBag
     )
     {
         $this->repository = $repository;
@@ -79,7 +71,6 @@ class TenantsEditPersonal
         $this->router = $router;
         $this->twig = $twig;
         $this->flashBag = $flashBag;
-        $this->user = $user;
     }
 
     /**
@@ -88,39 +79,28 @@ class TenantsEditPersonal
      */
     public function __invoke(Request $request): Response
     {
-        if($request->attributes->has('tenantId')) {
-            if (!($tenant = $this->repository->find($request->attributes->get('tenantId')))) {
-                throw new NotFoundHttpException();
-            }
-            $formAction = $this->router->generate('app_tenants_edit_personal', [
-                'tenantId' => $tenant->getId(),
-            ]);
-        } else {
-            $tenant = (new Tenant())
-                ->setNegotiator($this->user)
-            ;
-            $formAction = $this->router->generate('app_tenants_add_personal');
+        if (!$request->attributes->has('tenantId')) {
+            throw new BadRequestHttpException();
         }
 
-        $form = $this->factory->create(TenantType::class, $tenant, [
-            'action' => $formAction,
+        /** @var Tenant $tenant */
+        if (!($tenant = $this->repository->find($request->attributes->get('tenantId')))) {
+            throw new NotFoundHttpException();
+        }
+
+        $form = $this->factory->create(PropertyCriteriaType::class, $tenant->getCriteria(), [
+            'action' => $this->router->generate('app_tenants_edit_criteria', [
+                'tenantId' => $tenant->getId(),
+            ]),
         ]);
 
         $success = $this->handler->handle($form, $request);
 
-        if ($success && !$request->attributes->has('tenantId')) {
-            /** @var Tenant $tenant */
-            $tenant = $form->getData();
-            return new RedirectResponse($this->router->generate('app_tenants_edit_personal', [
-                'tenantId' => $tenant->getId(),
-            ]), Response::HTTP_CREATED);
-        }
-
         if ($success) {
-            $this->flashBag->add('form-success', 'Tenant updated successfully');
+            $this->flashBag->add('form-success', 'Criteria updated successfully');
         }
 
-        return new Response($this->twig->render('AppBundle:Contacts:edit-personal.html.twig', [
+        return new Response($this->twig->render('AppBundle:Contacts:edit-criteria.html.twig', [
             'form' => $form->createView(),
         ]));
     }

@@ -45,6 +45,7 @@ class TenantType extends AbstractType
             ])
             ->add('createdAt', Type\DateTimeType::class, [
                 'required' => false,
+                'label' => 'Dated added',
                 'widget' => 'single_text',
                 'disabled' => true,
             ])
@@ -72,21 +73,32 @@ class TenantType extends AbstractType
                     'class' => 'js-chosen-select',
                 ],
             ])
+            ->add('title', Type\ChoiceType::class, [
+                'required' => false,
+                'choices' => [
+                    'Ms' => Tenant::TITLE_MS,
+                    'Mr' => Tenant::TITLE_MR,
+                ]
+            ])
             ->add('firstName', Type\TextType::class, [
                 'required' => true,
             ])
             ->add('lastName', Type\TextType::class, [
                 'required' => true,
             ])
-            ->add('nationality', Type\CountryType::class, [
+            ->add('dob', Type\BirthdayType::class, [
                 'required' => false,
-                'preferred_choices' => [
-                    'GB',
-                    'US',
-                ],
-                'attr' => [
-                    'class' => 'js-chosen-select',
-                ],
+                'label' => 'Date of Birth',
+                'widget' => 'single_text',
+            ])
+            ->add('address', Type\TextType::class, [
+                'required' => false,
+            ])
+            ->add('city', Type\TextType::class, [
+                'required' => false,
+            ])
+            ->add('postcode', Type\TextType::class, [
+                'required' => false,
             ])
         ;
 
@@ -101,6 +113,7 @@ class TenantType extends AbstractType
             $form = $event->getForm()->getParent();
 
             $this->addSubTypeChoices($form, $event->getForm()->getData());
+            $this->addTypeSpecificFields($form, $event->getForm()->getData());
         });
     }
 
@@ -159,6 +172,40 @@ class TenantType extends AbstractType
                 'class' => 'js-chosen-select',
             ],
         ]);
+    }
+
+    /**
+     * @param FormInterface $form
+     * @param int|null $type
+     */
+    private function addTypeSpecificFields(FormInterface $form, int $type = null)
+    {
+        switch ($type) {
+            default:
+                return;
+
+            case Tenant::TYPE_LETTINGS_COMMERCIAL:
+                $form->add('companyName', Type\TextType::class, [
+                    'required' => true,
+                ]);
+                break;
+
+            case Tenant::TYPE_LETTINGS_LONG:
+            case Tenant::TYPE_LETTINGS_SHORT:
+            case Tenant::TYPE_SALES:
+            case Tenant::TYPE_LICENSEE:
+                $form->add('nationality', Type\CountryType::class, [
+                    'required' => false,
+                    'preferred_choices' => [
+                        'GB',
+                        'US',
+                    ],
+                    'attr' => [
+                        'class' => 'js-chosen-select',
+                    ],
+                ]);
+                break;
+        }
     }
 
     /**

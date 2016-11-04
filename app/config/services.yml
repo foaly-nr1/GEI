@@ -21,3 +21,13 @@ services:
       - "@twig"
       - "@=service('session').getFlashBag()"
       - "@=service('security.token_storage').getToken().getUser()"
+
+  'AppBundle\Action\Contacts\TenantsEditCriteria':
+    class: AppBundle\Action\Contacts\TenantsEditCriteria
+    arguments:
+      - "@=service('doctrine').getRepository('AppBundle:Tenant')"
+      - "@form.factory"
+      - "@app.form_handler.generic"
+      - "@router"
+      - "@twig"
+      - "@=service('session').getFlashBag()"

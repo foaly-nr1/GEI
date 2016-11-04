@@ -1,14 +1,24 @@
 {{ form_start(form) }}
 {{ form_row(form.type) }}
 {% if form.subType is defined %}
-{{ form_row(form.subType) }}
+    {{ form_row(form.subType) }}
 {% endif %}
 {{ form_row(form.negotiator) }}
 {{ form_row(form.createdAt) }}
 {{ form_row(form.source) }}
+{% if form.companyName is defined %}
+    {{ form_row(form.companyName) }}
+{% endif %}
 {{ form_row(form.firstName) }}
 {{ form_row(form.lastName) }}
+{% if form.nationality is defined %}
 {{ form_row(form.nationality) }}
+{% endif %}
+{{ form_row(form.title) }}
+{{ form_row(form.dob) }}
+{{ form_row(form.address) }}
+{{ form_row(form.city) }}
+{{ form_row(form.postcode) }}
 <div class="form-group">
     <div class="col-sm-2"></div>
     <div class="col-sm-10">

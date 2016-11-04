@@ -23,20 +23,42 @@
 {% endblock %}
 
 {% block modalContent %}
-    <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-inverse">
-                <div class="panel-heading">
-                    <i class="fa fa-child"></i> Personal Information
-                </div>
-                <div class="panel-wrapper collapse in" aria-expanded="true">
-                    <div class="panel-body">
-                        <x-div data-controller="/vendor/fl-form/dist/fl-form" data-config="flFormOptions">
-                            {{ render(path('app_tenants_edit_personal', { tenantId: tenant.id })) }}
-                        </x-div>
-                    </div>
-                </div>
-            </div>
+<div class="tabbable">
+    <ul class="nav nav-tabs">
+        <li role="presentation" class="active">
+            <a href="#tab-general" data-toggle="tab" aria-controls="tab-general" role="tab">
+                <i class="fa fa-file-o"></i> General
+            </a>
+        </li>
+        <li role="presentation">
+            <a href="#tab-property-matching" data-toggle="tab" aria-controls="tab-property-matching" role="tab">
+                <i class="fa fa-building-o"></i> Property matching
+            </a>
+        </li>
+        <li role="presentation">
+            <a href="#tab-history" data-toggle="tab" aria-controls="tab-history" role="tab">
+                <i class="fa fa-history"></i> History
+            </a>
+        </li>
+        <li role="presentation">
+            <a href="#tab-messages" data-toggle="tab" aria-controls="tab-messages" role="tab">
+                <i class="fa fa-envelope-o"></i> Messages
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade in active" id="tab-general">
+            {% include 'AppBundle:Contacts:edit-tab-general.html.twig' %}
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="tab-property-matching">
+
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="tab-history">
+
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="tab-messages">
+
         </div>
     </div>
+</div>
 {% endblock %}

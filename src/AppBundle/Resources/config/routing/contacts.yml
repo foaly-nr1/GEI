@@ -33,3 +33,9 @@ app_tenants_edit_personal:
   requirements:
     tenantId: \d+
   defaults: { _controller: AppBundle\Action\Contacts\TenantsEditPersonal:__invoke }
+
+app_tenants_edit_criteria:
+  path: /tenants/{tenantId}/criteria
+  requirements:
+    tenantId: \d+
+  defaults: { _controller: AppBundle\Action\Contacts\TenantsEditCriteria:__invoke }

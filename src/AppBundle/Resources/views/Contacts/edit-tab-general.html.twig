@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="col-md-7">
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <i class="fa fa-child"></i> Personal Information
+                <div class="pull-right">
+                    <a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a>
+                </div>
+            </div>
+            <div class="panel-wrapper collapse in" aria-expanded="true">
+                <div class="panel-body">
+                    <x-div data-controller="/vendor/fl-form/dist/fl-form" data-config="flFormOptions">
+                        {{ render(path('app_tenants_edit_personal', { tenantId: tenant.id })) }}
+                    </x-div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <i class="fa fa-building-o"></i> Criteria
+                <div class="pull-right">
+                    <a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a>
+                </div>
+            </div>
+            <div class="panel-wrapper collapse in" aria-expanded="true">
+                <div class="panel-body">
+                    <x-div data-controller="/vendor/fl-form/dist/fl-form" data-config="flFormOptions">
+                        {{ render(path('app_tenants_edit_criteria', { tenantId: tenant.id })) }}
+                    </x-div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <i class="fa fa-comments-o"></i> Notes
+                <div class="pull-right">
+                    <a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a>
+                </div>
+            </div>
+            <div class="panel-wrapper collapse in" aria-expanded="true">
+                <div class="panel-body">
+                    <x-div data-controller="/vendor/fl-form/dist/fl-form" data-config="flFormOptions">
+
+                    </x-div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

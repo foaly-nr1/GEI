@@ -59,6 +59,9 @@ class Tenant
     const SOURCE_RIGHTMOVE = 14;
     const SOURCE_ZOOPLA = 15;
 
+    const TITLE_MS = 1;
+    const TITLE_MR = 2;
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -67,13 +70,20 @@ class Tenant
     private $id;
 
     /**
-     * @ORM\Column(type="string", nullable=false)
-     * @Assert\NotBlank
+     * @ORM\Column(type="smallint", nullable=false)
+     * @Assert\NotNull
+     * @Assert\Choice(choices={
+     *     Tenant::TYPE_LETTINGS_LONG,
+     *     Tenant::TYPE_LETTINGS_SHORT,
+     *     Tenant::TYPE_LICENSEE,
+     *     Tenant::TYPE_SALES,
+     *     Tenant::TYPE_LETTINGS_COMMERCIAL,
+     * })
      */
     private $type;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="smallint", nullable=true)
      */
     private $subType;
 
@@ -91,6 +101,11 @@ class Tenant
      * @ORM\Column(type="string", nullable=true)
      */
     private $title;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $companyName;
 
     /**
      * @ORM\Column(type="string", nullable=false)
@@ -144,6 +159,11 @@ class Tenant
     private $phones;
 
     /**
+     * @ORM\Embedded(class="PropertyCriteria")
+     */
+    private $criteria;
+
+    /**
      * Hook timestampable behaviour
      * updates createdAt, updatedAt fields
      */
@@ -162,6 +182,7 @@ class Tenant
     {
         $this->emails = new ArrayCollection();
         $this->phones = new ArrayCollection();
+        $this->criteria = new PropertyCriteria();
     }
 
     /**
@@ -270,6 +291,25 @@ class Tenant
     /**
      * @return string|null
      */
+    public function getCompanyName()
+    {
+        return $this->companyName;
+    }
+
+    /**
+     * @param string|null $companyName
+     * @return $this
+     */
+    public function setCompanyName(string $companyName = null)
+    {
+        $this->companyName = $companyName;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
     public function getFirstName()
     {
         return $this->firstName;
@@ -320,6 +360,82 @@ class Tenant
     public function setNationality(string $nationality = null)
     {
         $this->nationality = $nationality;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDob()
+    {
+        return $this->dob;
+    }
+
+    /**
+     * @param \DateTimeInterface|null $dob
+     * @return $this
+     */
+    public function setDob(\DateTimeInterface $dob = null)
+    {
+        $this->dob = $dob;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param string|null $address
+     * @return $this
+     */
+    public function setAddress(string $address = null)
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param string|null $city
+     * @return $this
+     */
+    public function setCity(string $city = null)
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPostcode()
+    {
+        return $this->postcode;
+    }
+
+    /**
+     * @param string|null $postcode
+     * @return $this
+     */
+    public function setPostcode(string $postcode = null)
+    {
+        $this->postcode = $postcode;
 
         return $this;
     }
@@ -394,5 +510,13 @@ class Tenant
         }
 
         return $this;
+    }
+
+    /**
+     * @return PropertyCriteria
+     */
+    public function getCriteria()
+    {
+        return $this->criteria;
     }
 }
