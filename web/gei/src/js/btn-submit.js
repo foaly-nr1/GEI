@@ -16,7 +16,7 @@
         }
 
         const icon = document.createElement('i');
-        icon.className = 'fa fa-refresh fa-spin fa-fw';
+        icon.className = 'fa fa-refresh fa-spin';
         submitBtn.insertBefore(icon, submitBtn.firstChild);
     }
 

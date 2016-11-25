@@ -27,7 +27,7 @@ services:
     arguments:
       - "@=service('doctrine').getRepository('AppBundle:Tenant')"
       - "@form.factory"
-      - "@app.form_handler.generic"
+      - "@app.form_handler.property_criteria"
       - "@router"
       - "@twig"
       - "@=service('session').getFlashBag()"

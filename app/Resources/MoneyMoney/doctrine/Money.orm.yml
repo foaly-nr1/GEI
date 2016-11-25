@@ -2,6 +2,7 @@ Money\Money:
   type: embeddable
   fields:
     amount:
-      type: int
+      type: integer
+  embedded:
     currency:
-      type: string
+      class: Money\Currency

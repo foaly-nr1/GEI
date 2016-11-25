@@ -8,7 +8,16 @@ services:
     class: AppBundle\Form\Handler\GenericFormHandler
     parent: app.form_handler
 
+  app.form_handler.property_criteria:
+    class: AppBundle\Form\Handler\PropertyCriteriaFormHandler
+    parent: app.form_handler
+
   app.form_extension.help_text:
     class: AppBundle\Form\Extension\DateTimeExtension
     tags:
       - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\DateTimeType }
+
+  app.form_extension.money:
+    class: AppBundle\Form\Extension\MoneyTypeExtension
+    tags:
+      - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\MoneyType }

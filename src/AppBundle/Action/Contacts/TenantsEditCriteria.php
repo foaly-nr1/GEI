@@ -4,6 +4,7 @@ namespace AppBundle\Action\Contacts;
 
 use AppBundle\Entity\Tenant;
 use AppBundle\Form\Handler\GenericFormHandler;
+use AppBundle\Form\Handler\PropertyCriteriaFormHandler;
 use AppBundle\Form\Type\PropertyCriteriaType;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -51,7 +52,7 @@ class TenantsEditCriteria
     /**
      * @param EntityRepository $repository
      * @param FormFactoryInterface $factory
-     * @param GenericFormHandler $handler
+     * @param PropertyCriteriaFormHandler $handler
      * @param RouterInterface $router
      * @param \Twig_Environment $twig
      * @param FlashBagInterface $flashBag
@@ -59,7 +60,7 @@ class TenantsEditCriteria
     public function __construct(
         EntityRepository $repository,
         FormFactoryInterface $factory,
-        GenericFormHandler $handler,
+        PropertyCriteriaFormHandler $handler,
         RouterInterface $router,
         \Twig_Environment $twig,
         FlashBagInterface $flashBag
@@ -94,7 +95,7 @@ class TenantsEditCriteria
             ]),
         ]);
 
-        $success = $this->handler->handle($form, $request);
+        $success = $this->handler->handle($form, $request, $tenant);
 
         if ($success) {
             $this->flashBag->add('form-success', 'Criteria updated successfully');

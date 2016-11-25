@@ -103,6 +103,14 @@ class TenantType extends AbstractType
             ->add('postcode', Type\TextType::class, [
                 'required' => false,
             ])
+            ->add('country', Type\CountryType::class, [
+                'required' => true,
+                'preferred_choices' => ['GB', 'AE'],
+                'attr' => [
+                    'class' => 'js-chosen-select',
+                ],
+
+            ])
             ->add('emails', Type\CollectionType::class, [
                 'entry_type' => TenantEmailType::class,
                 'required' => true,

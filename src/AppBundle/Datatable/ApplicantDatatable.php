@@ -41,7 +41,7 @@ class ApplicantDatatable extends AbstractDatatableView
                         ],
                         'icon' => 'fa fa-pencil',
                         'attributes' => [
-                            'class' => 'btn btn-success btn-icon waves waves-circle waves-effect waves-float',
+                            'class' => 'btn btn-primary btn-circle btn-lg',
                             'role' => 'button',
                             'data-toggle' => 'modal',
                             'data-target' => '#modal',

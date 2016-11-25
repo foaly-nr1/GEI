@@ -25,6 +25,7 @@ framework:
         name: GOLDENEAGLE
         handler_id: session.handler.native_file
         cookie_secure: true
+        save_path: /tmp
     fragments:       ~
     http_method_override: true
     assets: ~
@@ -37,8 +38,10 @@ twig:
     form_themes:
          - 'bootstrap_3_horizontal_layout.html.twig'
          - 'Form/base.html.twig'
+         - 'Form/fields.html.twig'
          - 'Form/collection-type.html.twig'
          - 'Form/phone-type.html.twig'
+         - 'AppBundle:Form:rental-amount-type.html.twig'
 
 doctrine:
     dbal:

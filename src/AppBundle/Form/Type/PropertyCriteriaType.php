@@ -18,13 +18,13 @@ class PropertyCriteriaType extends AbstractType
             ->add('visaRequired', Type\CheckboxType::class, [
                 'required' => false,
             ])
-            ->add('minAmount', Type\IntegerType::class, [
+            ->add('minRent', RentalAmountType::class, [
                 'required' => false,
                 'attr' => [
                     'min' => 1,
                 ]
             ])
-            ->add('maxAmount', Type\IntegerType::class, [
+            ->add('maxRent', RentalAmountType::class, [
                 'required' => false,
                 'attr' => [
                     'min' => 1,

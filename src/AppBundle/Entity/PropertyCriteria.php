@@ -16,15 +16,14 @@ class PropertyCriteria
     private $visaRequired;
 
     /**
-     * TODO: Make embeddable that handles pw and pcm
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Embedded(class="RentalAmount")
      */
-    private $minAmount;
+    private $minRent;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Embedded(class="RentalAmount")
      */
-    private $maxAmount;
+    private $maxRent;
 
     /**
      * @ORM\Column(type="smallint", nullable=true)
@@ -78,6 +77,15 @@ class PropertyCriteria
     private $parking;
 
     /**
+     * @param string $currencyCode
+     */
+    public function __construct(string $currencyCode)
+    {
+        $this->minRent = new RentalAmount($currencyCode);
+        $this->maxRent = new RentalAmount($currencyCode);
+    }
+
+    /**
      * @return bool
      */
     public function isVisaRequired()
@@ -97,41 +105,28 @@ class PropertyCriteria
     }
 
     /**
-     * @return int|null
+     * @return RentalAmount
      */
-    public function getMinAmount()
+    public function getMinRent()
     {
-        return $this->minAmount;
+        return $this->minRent;
     }
 
     /**
-     * @param int|null $minAmount
-     * @return $this
+     * @return RentalAmount
      */
-    public function setMinAmount(int $minAmount = null)
+    public function getMaxRent()
     {
-        $this->minAmount = $minAmount;
-
-        return $this;
+        return $this->maxRent;
     }
 
     /**
-     * @return int|null
+     * @param string $currencyCode
      */
-    public function getMaxAmount()
+    public function setCurrencyCode(string $currencyCode)
     {
-        return $this->maxAmount;
-    }
-
-    /**
-     * @param int|null $maxAmount
-     * @return $this
-     */
-    public function setMaxAmount(int $maxAmount = null)
-    {
-        $this->maxAmount = $maxAmount;
-
-        return $this;
+        $this->minRent->setCurrencyCode($currencyCode);
+        $this->maxRent->setCurrencyCode($currencyCode);
     }
 
     /**

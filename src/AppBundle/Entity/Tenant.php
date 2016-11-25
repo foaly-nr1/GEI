@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Intl\CurrencyHelper;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -147,6 +148,13 @@ class Tenant
     private $postcode;
 
     /**
+     * @ORM\Column(type="string", nullable=false)
+     * @Assert\Country
+     * @Assert\NotNull
+     */
+    private $country = 'GB';
+
+    /**
      * @ORM\OneToMany(targetEntity="TenantEmail", mappedBy="tenant", cascade={"all"}, orphanRemoval=true)
      * @Assert\Valid
      */
@@ -182,7 +190,7 @@ class Tenant
     {
         $this->emails = new ArrayCollection();
         $this->phones = new ArrayCollection();
-        $this->criteria = new PropertyCriteria();
+        $this->criteria = new PropertyCriteria(CurrencyHelper::getCurrencyForCountry($this->country));
     }
 
     /**
@@ -436,6 +444,25 @@ class Tenant
     public function setPostcode(string $postcode = null)
     {
         $this->postcode = $postcode;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * @param string $country
+     * @return $this
+     */
+    public function setCountry(string $country)
+    {
+        $this->country = $country;
 
         return $this;
     }
