@@ -15,7 +15,7 @@ class RentalAmount
     const TYPE_PW = 'pw';
 
     /**
-     * @ORM\Embedded(class="Money\Money")
+     * @ORM\Embedded(class="Money\Money", columnPrefix=false)
      */
     private $amount;
 
