@@ -26,11 +26,11 @@ class MoneyTransformer implements DataTransformerInterface
      */
     public function transform($money)
     {
-        if(is_null($money)) {
+        if (is_null($money)) {
             return null;
         }
 
-        if(!($money instanceof Money\Money)) {
+        if (!($money instanceof Money\Money)) {
             throw new TransformationFailedException(sprintf(
                 'Object of type Money expected, %s given',
                 is_object($money) ? get_class($money) : gettype($money)
@@ -45,14 +45,14 @@ class MoneyTransformer implements DataTransformerInterface
      */
     public function reverseTransform($amount)
     {
-        if(is_null($amount)) {
+        if (is_null($amount)) {
             return null;
         }
 
-        if(!is_numeric($amount)) {
+        if (!is_numeric($amount)) {
             throw new TransformationFailedException('Numeric string expected');
         }
 
-        return new Money\Money(intval($amount*100), new Money\Currency($this->currency));
+        return new Money\Money(intval($amount * 100), new Money\Currency($this->currency));
     }
 }

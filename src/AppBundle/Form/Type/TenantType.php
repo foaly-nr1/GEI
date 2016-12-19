@@ -154,13 +154,14 @@ class TenantType extends AbstractType
 
     /**
      * @param FormInterface $form
-     * @param int|null $type
+     * @param int|null      $type
      */
     private function addSubTypeChoices(FormInterface $form, int $type = null)
     {
         switch ($type) {
             default:
                 $form->remove('subType');
+
                 return;
 
             case Tenant::TYPE_LETTINGS_LONG:
@@ -211,7 +212,7 @@ class TenantType extends AbstractType
 
     /**
      * @param FormInterface $form
-     * @param int|null $type
+     * @param int|null      $type
      */
     private function addTypeSpecificFields(FormInterface $form, int $type = null)
     {

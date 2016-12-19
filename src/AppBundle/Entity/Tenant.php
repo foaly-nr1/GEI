@@ -2,7 +2,6 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Intl\CurrencyHelper;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -171,13 +170,13 @@ class Tenant
      */
     private $criteria;
 
-    /**
+    /*
      * Hook timestampable behaviour
      * updates createdAt, updatedAt fields
      */
     use TimestampableEntity;
 
-    /**
+    /*
      * Hooks blameable behaviour
      * updates createdBy, updatedBy fields
      */
@@ -211,6 +210,7 @@ class Tenant
 
     /**
      * @param string|null $type
+     *
      * @return $this
      */
     public function setType(string $type = null)
@@ -230,6 +230,7 @@ class Tenant
 
     /**
      * @param string|null $subType
+     *
      * @return $this
      */
     public function setSubType(string $subType = null)
@@ -249,6 +250,7 @@ class Tenant
 
     /**
      * @param User|null $negotiator
+     *
      * @return $this
      */
     public function setNegotiator(User $negotiator = null)
@@ -268,6 +270,7 @@ class Tenant
 
     /**
      * @param string|null $source
+     *
      * @return $this
      */
     public function setSource(string $source = null)
@@ -287,6 +290,7 @@ class Tenant
 
     /**
      * @param string|null $title
+     *
      * @return $this
      */
     public function setTitle(string $title = null)
@@ -306,6 +310,7 @@ class Tenant
 
     /**
      * @param string|null $companyName
+     *
      * @return $this
      */
     public function setCompanyName(string $companyName = null)
@@ -325,6 +330,7 @@ class Tenant
 
     /**
      * @param string|null $firstName
+     *
      * @return $this
      */
     public function setFirstName(string $firstName = null)
@@ -344,6 +350,7 @@ class Tenant
 
     /**
      * @param string $lastName
+     *
      * @return $this
      */
     public function setLastName(string $lastName)
@@ -363,6 +370,7 @@ class Tenant
 
     /**
      * @param string|null $nationality
+     *
      * @return $this
      */
     public function setNationality(string $nationality = null)
@@ -382,6 +390,7 @@ class Tenant
 
     /**
      * @param \DateTimeInterface|null $dob
+     *
      * @return $this
      */
     public function setDob(\DateTimeInterface $dob = null)
@@ -401,6 +410,7 @@ class Tenant
 
     /**
      * @param string|null $address
+     *
      * @return $this
      */
     public function setAddress(string $address = null)
@@ -420,6 +430,7 @@ class Tenant
 
     /**
      * @param string|null $city
+     *
      * @return $this
      */
     public function setCity(string $city = null)
@@ -439,6 +450,7 @@ class Tenant
 
     /**
      * @param string|null $postcode
+     *
      * @return $this
      */
     public function setPostcode(string $postcode = null)
@@ -458,6 +470,7 @@ class Tenant
 
     /**
      * @param string $country
+     *
      * @return $this
      */
     public function setCountry(string $country)
@@ -477,6 +490,7 @@ class Tenant
 
     /**
      * @param TenantEmail $email
+     *
      * @return $this
      */
     public function addEmail(TenantEmail $email)
@@ -491,11 +505,12 @@ class Tenant
 
     /**
      * @param TenantEmail $email
+     *
      * @return $this
      */
     public function removeEmail(TenantEmail $email)
     {
-        if($this->emails->removeElement($email)) {
+        if ($this->emails->removeElement($email)) {
             $email->setTenant(null);
             $this->updatedAt = new \DateTimeImmutable();
         }
@@ -513,6 +528,7 @@ class Tenant
 
     /**
      * @param TenantPhone $phone
+     *
      * @return $this
      */
     public function addPhone(TenantPhone $phone)
@@ -527,11 +543,12 @@ class Tenant
 
     /**
      * @param TenantPhone $phone
+     *
      * @return $this
      */
     public function removePhone(TenantPhone $phone)
     {
-        if($this->phones->removeElement($phone)) {
+        if ($this->phones->removeElement($phone)) {
             $phone->setTenant(null);
             $this->updatedAt = new \DateTimeImmutable();
         }

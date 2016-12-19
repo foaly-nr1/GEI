@@ -18,7 +18,7 @@ use Symfony\Component\Routing\RouterInterface;
 class TenantsEditCriteria
 {
     /**
-     * Contact repository
+     * Contact repository.
      *
      * @var EntityRepository
      */
@@ -50,12 +50,12 @@ class TenantsEditCriteria
     private $flashBag;
 
     /**
-     * @param EntityRepository $repository
-     * @param FormFactoryInterface $factory
+     * @param EntityRepository            $repository
+     * @param FormFactoryInterface        $factory
      * @param PropertyCriteriaFormHandler $handler
-     * @param RouterInterface $router
-     * @param \Twig_Environment $twig
-     * @param FlashBagInterface $flashBag
+     * @param RouterInterface             $router
+     * @param \Twig_Environment           $twig
+     * @param FlashBagInterface           $flashBag
      */
     public function __construct(
         EntityRepository $repository,
@@ -64,8 +64,7 @@ class TenantsEditCriteria
         RouterInterface $router,
         \Twig_Environment $twig,
         FlashBagInterface $flashBag
-    )
-    {
+    ) {
         $this->repository = $repository;
         $this->factory = $factory;
         $this->handler = $handler;
@@ -76,6 +75,7 @@ class TenantsEditCriteria
 
     /**
      * @param Request $request
+     *
      * @return Response
      */
     public function __invoke(Request $request): Response

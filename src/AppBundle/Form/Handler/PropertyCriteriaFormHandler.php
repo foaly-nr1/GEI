@@ -26,9 +26,10 @@ class PropertyCriteriaFormHandler
      * Passes the current request to the form and if valid, persists
      * the form data.
      *
-     * @param  FormInterface $form The form to be submitted
-     * @param  Request $request Current request
-     * @param Tenant $tenant
+     * @param FormInterface $form    The form to be submitted
+     * @param Request       $request Current request
+     * @param Tenant        $tenant
+     *
      * @return bool Whether form submission was successful
      */
     public function handle(FormInterface $form, Request $request, Tenant $tenant): bool
@@ -39,7 +40,7 @@ class PropertyCriteriaFormHandler
 
         $form->handleRequest($request);
 
-        if(!$form->isValid()) {
+        if (!$form->isValid()) {
             return false;
         }
 

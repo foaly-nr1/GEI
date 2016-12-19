@@ -34,6 +34,7 @@ trait BlameableEntity
 
     /**
      * @param User $createdBy
+     *
      * @return $this
      */
     public function setCreatedBy(User $createdBy)
@@ -53,6 +54,7 @@ trait BlameableEntity
 
     /**
      * @param User $updatedBy
+     *
      * @return $this
      */
     public function setUpdatedBy(User $updatedBy)

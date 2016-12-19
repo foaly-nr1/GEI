@@ -24,38 +24,39 @@ abstract class AbstractFormHandler
     /**
      * Called before entity is persisted.
      *
-     * @param  object $entity
-     * @return void
+     * @param object $entity
      */
     protected function prePersist(&$entity)
-    {}
+    {
+    }
 
     /**
      * Called after entity is persisted.
      *
-     * @param  object $entity
-     * @return void
+     * @param object $entity
      */
     protected function postPersist($entity)
-    {}
+    {
+    }
 
     /**
      * Passes the current request to the form and if valid, persists
      * the form data.
      *
-     * @param  FormInterface $form    The form to be submitted
-     * @param  Request       $request Current request
-     * @return bool                   Whether form submission was successful
+     * @param FormInterface $form    The form to be submitted
+     * @param Request       $request Current request
+     *
+     * @return bool Whether form submission was successful
      */
     public function handle(FormInterface $form, Request $request): bool
     {
-        if(!$request->isMethod('POST') && !$request->isMethod('PATCH')) {
+        if (!$request->isMethod('POST') && !$request->isMethod('PATCH')) {
             return false;
         }
 
         $form->handleRequest($request);
 
-        if(!$form->isValid()) {
+        if (!$form->isValid()) {
             return false;
         }
 

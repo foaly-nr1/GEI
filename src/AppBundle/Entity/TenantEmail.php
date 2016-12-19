@@ -60,6 +60,7 @@ class TenantEmail
 
     /**
      * @param Tenant|null $tenant
+     *
      * @return $this
      */
     public function setTenant(Tenant $tenant = null)
@@ -79,6 +80,7 @@ class TenantEmail
 
     /**
      * @param string|null $email
+     *
      * @return $this
      */
     public function setEmail(string $email = null)

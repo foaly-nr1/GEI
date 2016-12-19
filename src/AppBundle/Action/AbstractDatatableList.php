@@ -23,14 +23,14 @@ abstract class AbstractDatatableList
     public function __construct(
         AbstractDatatableView $datatable,
         DatatableDataManager $dataManager
-    )
-    {
+    ) {
         $this->datatable = $datatable;
         $this->dataManager = $dataManager;
     }
 
     protected function addConditions(DatatableQuery $query, Request $request)
-    {}
+    {
+    }
 
     public function __invoke(Request $request): Response
     {

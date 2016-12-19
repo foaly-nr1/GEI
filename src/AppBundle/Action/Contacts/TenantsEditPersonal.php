@@ -18,7 +18,7 @@ use Symfony\Component\Routing\RouterInterface;
 class TenantsEditPersonal
 {
     /**
-     * Contact repository
+     * Contact repository.
      *
      * @var EntityRepository
      */
@@ -55,13 +55,13 @@ class TenantsEditPersonal
     private $user;
 
     /**
-     * @param EntityRepository $repository
+     * @param EntityRepository     $repository
      * @param FormFactoryInterface $factory
-     * @param GenericFormHandler $handler
-     * @param RouterInterface $router
-     * @param \Twig_Environment $twig
-     * @param FlashBagInterface $flashBag
-     * @param User $user
+     * @param GenericFormHandler   $handler
+     * @param RouterInterface      $router
+     * @param \Twig_Environment    $twig
+     * @param FlashBagInterface    $flashBag
+     * @param User                 $user
      */
     public function __construct(
         EntityRepository $repository,
@@ -71,8 +71,7 @@ class TenantsEditPersonal
         \Twig_Environment $twig,
         FlashBagInterface $flashBag,
         User $user
-    )
-    {
+    ) {
         $this->repository = $repository;
         $this->factory = $factory;
         $this->handler = $handler;
@@ -84,11 +83,12 @@ class TenantsEditPersonal
 
     /**
      * @param Request $request
+     *
      * @return Response
      */
     public function __invoke(Request $request): Response
     {
-        if($request->attributes->has('tenantId')) {
+        if ($request->attributes->has('tenantId')) {
             if (!($tenant = $this->repository->find($request->attributes->get('tenantId')))) {
                 throw new NotFoundHttpException();
             }
@@ -111,6 +111,7 @@ class TenantsEditPersonal
         if ($success && !$request->attributes->has('tenantId')) {
             /** @var Tenant $tenant */
             $tenant = $form->getData();
+
             return new RedirectResponse($this->router->generate('app_tenants_edit_personal', [
                 'tenantId' => $tenant->getId(),
             ]), Response::HTTP_CREATED);

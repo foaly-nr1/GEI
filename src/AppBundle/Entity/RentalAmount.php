@@ -34,6 +34,7 @@ class RentalAmount
 
     /**
      * @param Money $amount
+     *
      * @return Money
      */
     private function convertMonthlyToWeekly(Money $amount)
@@ -43,6 +44,7 @@ class RentalAmount
 
     /**
      * @param Money $amount
+     *
      * @return Money
      */
     private function convertWeeklyToMonthly(Money $amount)
@@ -82,6 +84,7 @@ class RentalAmount
 
     /**
      * @param Money $amount
+     *
      * @return $this
      */
     public function setAmount(Money $amount)
@@ -101,6 +104,7 @@ class RentalAmount
 
     /**
      * @param string $type
+     *
      * @return $this
      */
     public function setType(string $type)
@@ -116,6 +120,7 @@ class RentalAmount
 
     /**
      * @param string $currencyCode
+     *
      * @return $this
      */
     public function setCurrencyCode(string $currencyCode)

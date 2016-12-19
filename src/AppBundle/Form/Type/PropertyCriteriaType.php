@@ -7,7 +7,6 @@ use AppBundle\Entity\PropertyCriteria;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class PropertyCriteriaType extends AbstractType
@@ -28,37 +27,37 @@ class PropertyCriteriaType extends AbstractType
                 'required' => false,
                 'attr' => [
                     'min' => 1,
-                ]
+                ],
             ])
             ->add('maxRent', RentalAmountType::class, [
                 'required' => false,
                 'attr' => [
                     'min' => 1,
-                ]
+                ],
             ])
             ->add('minBeds', Type\IntegerType::class, [
                 'required' => false,
                 'attr' => [
                     'min' => 1,
-                ]
+                ],
             ])
             ->add('maxBeds', Type\IntegerType::class, [
                 'required' => false,
                 'attr' => [
                     'min' => 1,
-                ]
+                ],
             ])
             ->add('minTerm', Type\IntegerType::class, [
                 'required' => false,
                 'attr' => [
                     'min' => 0,
-                ]
+                ],
             ])
             ->add('maxTerm', Type\IntegerType::class, [
                 'required' => false,
                 'attr' => [
                     'min' => 0,
-                ]
+                ],
             ])
             ->add('furnished', Type\CheckboxType::class, [
                 'required' => false,

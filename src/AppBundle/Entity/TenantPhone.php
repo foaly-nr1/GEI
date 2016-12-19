@@ -61,6 +61,7 @@ class TenantPhone
 
     /**
      * @param string|null $phone
+     *
      * @return $this
      */
     public function setPhone(string $phone = null)
@@ -81,6 +82,7 @@ class TenantPhone
 
     /**
      * @param Tenant|null $tenant
+     *
      * @return $this
      */
     public function setTenant(Tenant $tenant = null)

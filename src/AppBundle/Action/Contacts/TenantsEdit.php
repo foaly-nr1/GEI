@@ -11,7 +11,7 @@ use Symfony\Component\Routing\RouterInterface;
 class TenantsEdit
 {
     /**
-     * Tenant repository
+     * Tenant repository.
      *
      * @var EntityRepository
      */
@@ -28,16 +28,15 @@ class TenantsEdit
     private $twig;
 
     /**
-     * @param EntityRepository $repository Tenant repository
-     * @param RouterInterface $router
+     * @param EntityRepository  $repository Tenant repository
+     * @param RouterInterface   $router
      * @param \Twig_Environment $twig
      */
     public function __construct(
         EntityRepository $repository,
         RouterInterface $router,
         \Twig_Environment $twig
-    )
-    {
+    ) {
         $this->repository = $repository;
         $this->router = $router;
         $this->twig = $twig;
@@ -45,11 +44,12 @@ class TenantsEdit
 
     /**
      * @param Request $request
+     *
      * @return Response
      */
     public function __invoke(Request $request): Response
     {
-        if(!($tenant = $this->repository->find($request->attributes->get('tenantId')))) {
+        if (!($tenant = $this->repository->find($request->attributes->get('tenantId')))) {
             throw new NotFoundHttpException();
         }
 

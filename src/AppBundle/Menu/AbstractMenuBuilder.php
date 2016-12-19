@@ -1,4 +1,5 @@
 <?php
+
 namespace AppBundle\Menu;
 
 use Knp\Menu\FactoryInterface;
@@ -20,9 +21,10 @@ abstract class AbstractMenuBuilder
     }
 
     /**
-     * @param array $options
+     * @param array  $options
      * @param string $label
      * @param string $icon
+     *
      * @return AbstractMenuBuilder
      */
     protected function addActionButton(array $options, $label = 'Add', $icon = 'plus'): AbstractMenuBuilder

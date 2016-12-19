@@ -19,7 +19,7 @@ class Applicants
 
     /**
      * @param ApplicantDatatable $datatable
-     * @param \Twig_Environment $twig
+     * @param \Twig_Environment  $twig
      */
     public function __construct(ApplicantDatatable $datatable, \Twig_Environment $twig)
     {

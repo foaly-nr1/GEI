@@ -25,8 +25,8 @@ abstract class AbstractDatatableView extends BaseAbstractDatatableView
             'stripe_classes' => [],
         ]);
 
-        foreach(['topActions', 'features', 'options', 'callbacks', 'events', 'ajax'] as $property) {
-            if(array_key_exists($property, $options)) {
+        foreach (['topActions', 'features', 'options', 'callbacks', 'events', 'ajax'] as $property) {
+            if (array_key_exists($property, $options)) {
                 $this->$property->set($options[$property]);
             }
         }
@@ -38,6 +38,7 @@ abstract class AbstractDatatableView extends BaseAbstractDatatableView
     public function getName()
     {
         $reflect = new \ReflectionClass($this);
+
         return strtolower(str_replace(' ', '_', trim(preg_replace('/([A-Z])/', ' $0', $reflect->getShortName()))));
     }
 }

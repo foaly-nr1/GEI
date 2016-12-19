@@ -48,7 +48,8 @@ class PropertyCriteria
     private $moveDate;
 
     /**
-     * TODO: Make embeddable that handles both weeks and months
+     * TODO: Make embeddable that handles both weeks and months.
+     *
      * @ORM\Column(type="integer", nullable=true)
      */
     private $minTerm;
@@ -99,6 +100,7 @@ class PropertyCriteria
 
     /**
      * @param string|null $country
+     *
      * @return $this
      */
     public function setCountry(string $country = null)
@@ -120,6 +122,7 @@ class PropertyCriteria
 
     /**
      * @param bool $visaRequired
+     *
      * @return $this
      */
     public function setVisaRequired(bool $visaRequired)
@@ -164,6 +167,7 @@ class PropertyCriteria
 
     /**
      * @param int|null $minBeds
+     *
      * @return $this
      */
     public function setMinBeds(int $minBeds = null)
@@ -183,6 +187,7 @@ class PropertyCriteria
 
     /**
      * @param int|null $maxBeds
+     *
      * @return $this
      */
     public function setMaxBeds(int $maxBeds = null)
@@ -202,6 +207,7 @@ class PropertyCriteria
 
     /**
      * @param int|null $minTerm
+     *
      * @return $this
      */
     public function setMinTerm(int $minTerm = null)
@@ -221,6 +227,7 @@ class PropertyCriteria
 
     /**
      * @param int|null $maxTerm
+     *
      * @return $this
      */
     public function setMaxTerm(int $maxTerm = null)
@@ -240,6 +247,7 @@ class PropertyCriteria
 
     /**
      * @param bool|null $furnished
+     *
      * @return $this
      */
     public function setFurnished(bool $furnished = null)
@@ -259,6 +267,7 @@ class PropertyCriteria
 
     /**
      * @param int|null $propertyType
+     *
      * @return $this
      */
     public function setPropertyType(int $propertyType = null)
@@ -278,6 +287,7 @@ class PropertyCriteria
 
     /**
      * @param bool|null $outsideSpace
+     *
      * @return $this
      */
     public function setOutsideSpace(bool $outsideSpace = null)
@@ -297,6 +307,7 @@ class PropertyCriteria
 
     /**
      * @param bool|null $parking
+     *
      * @return $this
      */
     public function setParking(bool $parking = null)
