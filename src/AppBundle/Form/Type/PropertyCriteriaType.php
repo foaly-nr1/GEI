@@ -15,6 +15,12 @@ class PropertyCriteriaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('country', Type\CountryType::class, [
+                'required' => true,
+                'attr' => [
+                    'class' => 'js-chosen-select',
+                ],
+            ])
             ->add('visaRequired', Type\CheckboxType::class, [
                 'required' => false,
             ])

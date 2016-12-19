@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Intl\CurrencyHelper;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -10,6 +11,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class PropertyCriteria
 {
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\NotNull
+     */
+    private $country = 'GB';
+
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
@@ -76,13 +83,31 @@ class PropertyCriteria
      */
     private $parking;
 
-    /**
-     * @param string $currencyCode
-     */
-    public function __construct(string $currencyCode)
+    public function __construct()
     {
-        $this->minRent = new RentalAmount($currencyCode);
-        $this->maxRent = new RentalAmount($currencyCode);
+        $this->minRent = new RentalAmount(CurrencyHelper::getCurrencyForCountry($this->country));
+        $this->maxRent = new RentalAmount(CurrencyHelper::getCurrencyForCountry($this->country));
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * @param string|null $country
+     * @return $this
+     */
+    public function setCountry(string $country = null)
+    {
+        $this->country = $country;
+
+        $this->setCurrencyCode(CurrencyHelper::getCurrencyForCountry($this->country));
+
+        return $this;
     }
 
     /**

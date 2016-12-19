@@ -190,7 +190,7 @@ class Tenant
     {
         $this->emails = new ArrayCollection();
         $this->phones = new ArrayCollection();
-        $this->criteria = new PropertyCriteria(CurrencyHelper::getCurrencyForCountry($this->country));
+        $this->criteria = new PropertyCriteria();
     }
 
     /**

@@ -3,3 +3,5 @@
     {% set money %}{{ form_widget(form.amount, { 'attr': { 'class': 'addon-select-sibling' }}) }}{% endset %}
     {{ money|raw|replace({'</div>': select ~ '</div>'})|raw }}
 {% endblock rental_amount_widget %}
+
+
