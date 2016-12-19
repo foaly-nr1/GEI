@@ -25,6 +25,22 @@ class ContactsMenuBuilder extends AbstractMenuBuilder
         $this->menu->addChild('Guarantors', [
             'uri' => '#guarantors',
         ]);
+
+        $this->menu->addChild('Landlords', [
+            'uri' => '#guarantors',
+        ]);
+
+        $this->menu->addChild('Contractors', [
+            'uri' => '#contractors',
+        ]);
+
+        $this->menu->addChild('Vendors', [
+            'uri' => '#vendors',
+        ]);
+
+        $this->menu->addChild('Suppliers', [
+            'uri' => '#suppliers',
+        ]);
     }
 
     /**
