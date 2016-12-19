@@ -42,7 +42,7 @@
             <div class="panel-wrapper collapse in" aria-expanded="true">
                 <div class="panel-body">
                     <x-div data-controller="/vendor/fl-form/dist/fl-form" data-config="flFormOptions">
-
+                        {{ render(path('app_tenants_edit_notes', { tenantId: tenant.id })) }}
                     </x-div>
                 </div>
             </div>

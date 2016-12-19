@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\PersistentCollection;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -170,6 +171,11 @@ class Tenant
      */
     private $criteria;
 
+    /**
+     * @ORM\OneToMany(targetEntity="TenantNote", mappedBy="tenant")
+     */
+    private $notes;
+
     /*
      * Hook timestampable behaviour
      * updates createdAt, updatedAt fields
@@ -190,6 +196,7 @@ class Tenant
         $this->emails = new ArrayCollection();
         $this->phones = new ArrayCollection();
         $this->criteria = new PropertyCriteria();
+        $this->notes = new ArrayCollection();
     }
 
     /**
@@ -562,5 +569,13 @@ class Tenant
     public function getCriteria()
     {
         return $this->criteria;
+    }
+
+    /**
+     * @return ArrayCollection|PersistentCollection
+     */
+    public function getNotes()
+    {
+        return $this->notes;
     }
 }

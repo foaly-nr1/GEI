@@ -1,0 +1,39 @@
+<x-div
+    data-controller="/gei/build/js/notes"
+    data-reload="{{ path('app_tenants_edit_notes', { tenantId: tenant.id }) }}"
+    class="js-notes-reload"
+>
+    <div class="chat-box">
+        <ul class="chat-list nicescroll" style="overflow: hidden;" tabindex="5005">
+        {% for note in tenant.notes %}
+            <li{% if loop.index is even %} class="odd"{% endif %}>
+                <div class="chat-image"><img alt="male" src="/theme/dist/images/users/paul.jpg"></div>
+                <div class="chat-body">
+                    <div class="chat-text">
+                        <a
+                            href="{{ path('app_tenants_edit_note_delete', { noteId: note.id }) }}"
+                            class="pull-right js-btn-delete"
+                        >
+                            <i class="fa fa-times"></i>
+                        </a>
+                        <h4>{{ note.author.displayName }}</h4>
+                        <p>{{ note.content }}</p>
+                        <b><span class="datetime">{{ note.createdAt|date('r') }}</span></b>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+        </ul>
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="input-group">
+                    {{ form_widget(form.content) }}
+                    <span class="input-group-btn">
+                    <button class="btn btn-primary" type="button">Send</button>
+                    </span> </div>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+</x-div>

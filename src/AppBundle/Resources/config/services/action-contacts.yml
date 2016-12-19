@@ -26,3 +26,12 @@ services:
       - "@router"
       - "@twig"
       - "@=service('session').getFlashBag()"
+
+  'AppBundle\Action\Contacts\TenantsEditNotes':
+    class: AppBundle\Action\Contacts\TenantsEditNotes
+    arguments:
+      - "@=service('doctrine').getRepository('AppBundle:Tenant')"
+      - "@form.factory"
+      - "@app.form_handler.generic"
+      - "@router"
+      - "@twig"
